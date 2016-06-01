@@ -1,0 +1,9 @@
+{% extends 'layouts/base.html' %}
+{% block title %}
+	{{instance.id}} - {{ block.super }}
+{% endblock %}
+{% block content %}
+<h1> {{instance.id}}</h1>
+<p> {{instance.pH_level}}</p>
+<p> {{instance.time_collected}}</p>
+{% endblock %}
