@@ -27,8 +27,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'registration',
-    'mister.apps.MisterConfig'
+    'mister.apps.MisterConfig',
+    'rest_framework',
 ]
+
+REST_FRAMEWORK = {
+    # change to IsAuthenticated after registration is finished
+    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.AllowAny',),
+    'PAGE_SIZE': 10
+}
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
