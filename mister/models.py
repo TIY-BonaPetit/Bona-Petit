@@ -10,4 +10,5 @@ class Collector(models.Model):
     time_collected = models.DateTimeField(auto_now_add=True)
 
    
+   # two separates models: temp and pH_levl
    
