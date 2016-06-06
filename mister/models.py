@@ -18,6 +18,7 @@ class UserProfile(models.Model):
     farm_Type = models.IntegerField(choices=farm_choices)
     crop_choices= [(1, 'Flowers'), (2, 'Herbs'), (3, 'Cannabis'), (4, 'Vegetables'), (5, 'Combination')]
     crop_Type = models.IntegerField(choices=crop_choices)
+    zip_Code = models.FloatField(max_length=6)
 
     def __unicode__(self):
         return self.user.username

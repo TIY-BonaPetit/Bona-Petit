@@ -50,7 +50,8 @@ def register(request):
             'register.html',
             {'user_form': user_form, 'profile_form': profile_form, 'registered': registered},
             context)
-
+    # return HttpResponseRedirect('index')
+    
 @login_required
 def restricted(request):
     return HttpResponse("You're Logged In!")
@@ -86,18 +87,18 @@ def user_logout(request):
 
 from django.contrib.auth.models import User
 
-# @login_required
-# def profile(request):
-#     context = RequestContext(request)
-#     cat_list = get_category_list()
-#     context_dict = {'cat_list': cat_list}
-#     u = User.objects.get(username=request.user)
+@login_required
+def profile(request):
+    context = RequestContext(request)
+    cat_list = get_category_list()
+    context_dict = {'cat_list': cat_list}
+    u = User.objects.get(username=request.user)
 
-#     try:
-#         up = UserProfile.objects.get(user=u)
-#     except:
-#         up = None
+    try:
+        up = UserProfile.objects.get(user=u)
+    except:
+        up = None
 
-#     context_dict['user'] = u
-#     context_dict['userprofile'] = up
-#     return render_to_response('profile.html', context_dict, context)
+    context_dict['user'] = u
+    context_dict['userprofile'] = up
+    return render_to_response('profile.html', context_dict, context)
