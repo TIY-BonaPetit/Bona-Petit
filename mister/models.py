@@ -9,7 +9,9 @@ class Collector(models.Model):
     temperature = models.FloatField()
     time_collected = models.DateTimeField(auto_now_add=True)
 
-   # two separates models: temp and pH_levl?
+    def __str__(self):
+        return str(self.pH_level)
+  
 
 
 class UserProfile(models.Model):
@@ -22,5 +24,7 @@ class UserProfile(models.Model):
 
     def __unicode__(self):
         return self.user.username
-
    
+    
+
+   # two separates models: temp and pH_levl
