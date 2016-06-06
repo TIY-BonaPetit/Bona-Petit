@@ -34,7 +34,7 @@ INSTALLED_APPS = [
 REST_FRAMEWORK = {
     # change to IsAuthenticated after registration is finished
     'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.AllowAny',),
-    'PAGE_SIZE': 10
+    'PAGE_SIZE': 20
 }
 
 MIDDLEWARE_CLASSES = [

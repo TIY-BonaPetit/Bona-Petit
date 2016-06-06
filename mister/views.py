@@ -24,10 +24,10 @@ class CollectionsViewSet(viewsets.ModelViewSet):
 
 
 def data_csv(request):
-	response = HttpResponse(content_type='text/csv')
-	response['Content-Disposition'] = 'attachment; filename="data_csv.csv"'
-	# Create the HttpResponse object with the appropriate CSV header.
-	writer = csv.writer(response)
-	for collector in Collector.objects.all():
-		writer.writerow([collector.pH_level, collector.temperature])
-	return response
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="data_csv.csv"'
+    # Create the HttpResponse object with the appropriate CSV header.
+    writer = csv.writer(response)
+    for collector in Collector.objects.all():
+        writer.writerow([collector.pH_level, collector.temperature])
+    return response
