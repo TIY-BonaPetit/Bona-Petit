@@ -15,7 +15,7 @@ DEBUG = True
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 ALLOWED_HOSTS = []
-LOGIN_REDIRECT_URL = "home"
+LOGIN_URL = "login"
 
 # Application definition
 
@@ -24,9 +24,10 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'registration',
+    # 'registration',
     'mister.apps.MisterConfig',
     'rest_framework',
 ]

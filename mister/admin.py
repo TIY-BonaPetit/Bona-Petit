@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Collector
+from .models import Collector, UserProfile
 
 
 class CollectorAdmin(admin.ModelAdmin):
@@ -8,3 +8,4 @@ class CollectorAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Collector, CollectorAdmin)
+admin.site.register(UserProfile)
