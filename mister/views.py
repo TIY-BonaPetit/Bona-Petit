@@ -54,7 +54,7 @@ def register(request):
             'register.html',
             {'user_form': user_form, 'profile_form': profile_form, 'registered': registered},
             context)
-    # return HttpResponseRedirect('index')
+        
     
 @login_required
 def restricted(request):
