@@ -3,9 +3,10 @@
 {% block content %}
 	{% if user.is_authenticated %}
 		{% for collector in data %}
-		<h1>Collection Instance: {{collector.id}}<h1>
-		<p>Instance's pH Level: {{collector.pH_level}}</p>
+		<h1>Instance<h1>
 		<p>Time Collected: {{collector.time_collected}}</p>
+		<p>pH Level: {{collector.pH_level}}S</p>
+		<p>Temperature: {{collector.temperature}}°C</p>
 		{% endfor %}
 	{% endif %}
 {% endblock %}
