@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
 {% block title %}Plant Info - {{ block.super }}{% endblock %}
 {% block content %}
-	{% for collector in data %}
-	<h1>Collection Instance: {{collector.id}}<h1>
-	<p>Instance's pH Level: {{collector.pH_level}}</p>
-	<p>Time Collected: {{collector.time_collected}}</p>
-	{% endfor %}
+	{% if user.is_authenticated %}
+		{% for collector in data %}
+		<h1>Collection Instance: {{collector.id}}<h1>
+		<p>Instance's pH Level: {{collector.pH_level}}</p>
+		<p>Time Collected: {{collector.time_collected}}</p>
+		{% endfor %}
+	{% endif %}
 {% endblock %}
 
 

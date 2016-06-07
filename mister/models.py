@@ -4,14 +4,14 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 
 class Collector(models.Model):
-    user=models.OneToOneField(User)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     pH_level = models.FloatField()
     temperature = models.FloatField()
     time_collected = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return str(self.pH_level)
-  
+   # two separates models: temp and pH_levl?
 
 
 class UserProfile(models.Model):

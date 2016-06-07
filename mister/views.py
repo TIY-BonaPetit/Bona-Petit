@@ -16,8 +16,8 @@ def index(request):
 
 
 def collection(request):
-    data = Collector.objects.all().order_by('-time_collected')
-    return render(request, 'plantinfo.html', {'data': data, })
+    data = Collector.objects.filter(user=request.user).order_by('-time_collected')
+    return render(request, 'plantinfo.html', {'data': data})
 
 
 class CollectionsViewSet(viewsets.ModelViewSet):
