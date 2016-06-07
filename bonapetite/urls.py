@@ -5,6 +5,7 @@ from rest_framework import routers
 
 router = routers.DefaultRouter()
 router.register(r'mister', views.CollectionsViewSet)
+router.register(r'users', views.UserViewSet)
 
 
 # Wire up our API using automatic URL routing.

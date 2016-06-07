@@ -9,6 +9,8 @@ from .forms import UserForm, UserProfileForm
 from django.template import RequestContext
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from mister.serializers import UserSerializer
 
 
 def index(request):
@@ -18,6 +20,14 @@ def index(request):
 def collection(request):
     data = Collector.objects.filter(user=request.user).order_by('-time_collected')
     return render(request, 'plantinfo.html', {'data': data})
+
+
+class UserViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = User.objects.all().order_by('-date_joined')
+    serializer_class = UserSerializer
 
 
 class CollectionsViewSet(viewsets.ModelViewSet):
