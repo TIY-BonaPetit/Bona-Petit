@@ -1,6 +1,24 @@
 {% extends 'base.html' %}
-{% block title %}Plant Info - {{ block.super }}{% endblock %}
-{% block content %}
+
+{% block title %}
+	Plant Info - {{ block.super }}
+{% endblock %}
+
+{% block headernavul %}
+	<li><a href="{% url 'index' %}">Home</a></li>
+	<li><a href="{% url 'about' %}">About</a></li>
+	<li><a href="{% url 'contact' %}">Contact</a></li>
+	{% if user.is_authenticated %}
+	<li><a href="{% url 'profile' %}">Profile</a></li>
+	<li><a href="{% url 'plantinfo' %}" class='selected'>Plant Info</a></li>
+	<li><a href="{% url 'logout' %}">Logout</a></li>
+	{% else %}
+	<li><a href="{% url 'register' %}">Register </a></li>
+	<li><a href="{% url 'login' %}">Login</a></li>
+	{% endif %}
+{% endblock %}
+
+{% block bodycontent %}
 	{% if user.is_authenticated %}
 	<h1> Bona Petite, {{user.username}}!</h1>
 		{% for collector in data %}
@@ -11,5 +29,3 @@
 		{% endfor %}
 	{% endif %}
 {% endblock %}
-
-

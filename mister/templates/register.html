@@ -1,23 +1,34 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Bona Petite</title>
-    </head>
+{% extends 'base.html' %}
 
-    <body>
-        <h1>Register with Bona Petite</h1>
+{% block title %}
+	Register - {{ block.super }}
+{% endblock %}
 
-        {% if registered %}
-        <strong>Bona Petite Welcomes You!</strong>
-        <a href="{% url 'login' %}">Login</a>
-        {% else %}
-        <form id="user_form" method="post" action="/register/"
-                enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ user_form.as_p }}
-            {{ profile_form.as_p }}
-            <input type="submit" name="submit" value="Register" />
-        </form>
-        {% endif %}
-    </body>
-</html>
+{% block headernavul %}
+	<li><a href="{% url 'index' %}">Home</a></li>
+	<li><a href="{% url 'about' %}">About</a></li>
+	<li><a href="{% url 'contact' %}">Contact</a></li>
+	{% if user.is_authenticated %}
+	<li><a href="{% url 'profile' %}">Profile</a></li>
+	<li><a href="{% url 'plantinfo' %}">Plant Info</a></li>
+	<li><a href="{% url 'logout' %}">Logout</a></li>
+	{% else %}
+	<li><a href="{% url 'register' %}" class='selected'>Register </a></li>
+	<li><a href="{% url 'login' %}">Login</a></li>
+	{% endif %}
+{% endblock %}
+
+{% block bodycontent %}
+    {% if registered %}
+    <strong>Bona Petite Welcomes You!</strong>
+    <a href="{% url 'login' %}">Login</a>
+    {% else %}
+    <form id="user_form" method="post" action="/register/"
+            enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ user_form.as_p }}
+        {{ profile_form.as_p }}
+        <input type="submit" name="submit" value="Register"/>
+    </form>
+    {% endif %}
+{% endblock %}
