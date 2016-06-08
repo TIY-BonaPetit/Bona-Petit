@@ -28,8 +28,12 @@ p {
     font-size: 22.5px;
 }
 
-a:hover{
+a {
     text-decoration: none;
+}
+
+a.selected {
+    font-weight: bold;
 }
 
 ul {
