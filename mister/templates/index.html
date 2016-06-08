@@ -1,5 +1,23 @@
 {% extends 'base.html' %}
-{% block title %}Homepage - {{ block.super }}{% endblock %}
-{% block content %}
-		<p> The Future of Hydroponic Farms is here! </p>
+
+{% block title %}
+	Homepage - {{ block.super }}
+{% endblock %}
+
+{% block headernavul %}
+	<li><a href="{% url 'index' %}" class='selected'>Home</a></li>
+	<li><a href="{% url 'about' %}">About</a></li>
+	<li><a href="{% url 'contact' %}">Contact</a></li>
+	{% if user.is_authenticated %}
+	<li><a href="{% url 'profile' %}">Profile</a></li>
+	<li><a href="{% url 'plantinfo' %}">Plant Info</a></li>
+	<li><a href="{% url 'logout' %}">Logout</a></li>
+	{% else %}
+	<li><a href="{% url 'register' %}">Register </a></li>
+	<li><a href="{% url 'login' %}">Login</a></li>
+	{% endif %}
+{% endblock %}
+
+{% block bodycontent %}
+	<p> The Future of Hydroponic Farms is here! </p>
 {% endblock %}

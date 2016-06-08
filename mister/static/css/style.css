@@ -148,8 +148,13 @@ a {
     color: #FFF;
 }
 
+/* light gray text */
+nav a, nav a:visited{
+    color: #DDD;
+}
+
 /* light green text */
-a:hover{
+nav a.selected, nav a:hover {
     color: #42DCA3;
 }
 
