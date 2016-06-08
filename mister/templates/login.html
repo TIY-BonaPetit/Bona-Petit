@@ -1,24 +1,22 @@
 {% extends 'base.html' %}
-    <head>
-		{% block title %}
-			Login
-		{% endblock %}
-    </head>
 
-    <body>
-        {% block header %}
-        {% endblock %}
-        {% block content %}
-            <h1>Login to Bona Petite</h1>
+{% block title %}
+	Login
+{% endblock %}
 
-            <form id="login_form" method="post" action="/login/">
-                {% csrf_token %}
-                Username: <input type="text" name="username" value="" size="50" />
-                <br />
-                Password: <input type="password" name="password" value="" size="50" />
-                <br />
+{% block header %}
+{% endblock %}
 
-                <input type="submit" value="submit" />
-            </form>
-        {% endblock %}
-    </body>
+{% block content %}
+    <h1>Login to Bona Petite</h1>
+
+    <form id="login_form" method="post" action="/login/">
+        {% csrf_token %}
+        Username: <input type="text" name="username" value="" size="50" />
+        <br />
+        Password: <input type="password" name="password" value="" size="50" />
+        <br />
+
+        <input type="submit" value="submit" />
+    </form>
+{% endblock %}
