@@ -7,7 +7,11 @@
 				Bona Petite Project
 			{% endblock %}
 		</title>
+		<link rel="stylesheet" href="{% static 'css/normalize.css' %}" />
+        <link href='https://fonts.googleapis.com/css?family=Raleway|Monoton' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+		<link rel="stylesheet" href="{% static 'css/responsive.css' %}" />
+		<meta name='viewport' content='width=device-width, initial-scale=1.0'>
 		{% block header %}{% endblock %}
 	</head>
 	<body>
@@ -23,7 +27,7 @@
 					</li>
 					<li>
 						<a href="{% url 'contact' %}">Contact</a>
-					</li>	
+					</li>
 					{% if user.is_authenticated %}
 					<li>
 						<a href="{% url 'profile' %}">Profile</a>
@@ -40,13 +44,12 @@
 					</li>
 					<li>
 						<a href="{% url 'login' %}">Login</a>
-					</li>	
+					</li>
 					{% endif %}
 				</ul>
-			</nav>		
+			</nav>
 		</header>
 	{% block content %}{% endblock %}
 	{% block footer %}{% endblock %}
 	</body>
 </html>
-
