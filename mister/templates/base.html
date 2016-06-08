@@ -3,21 +3,47 @@
 <html>
 	<head>
 		<title>
-			{% block title %}Bona Petite Project{% endblock %}
+			{% block title %}
+				Bona Petite Project
+			{% endblock %}
 		</title>
 		<link rel="stylesheet" href="{% static 'css/normalize.css' %}" />
         <link href='https://fonts.googleapis.com/css?family=Raleway:400,700|Roboto' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="{% static 'css/style.css' %}" />
-		<link rel="stylesheet" href="{% static 'css/responsive.css' %}" />
-		<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+		{% block header %}{% endblock %}
 	</head>
 	<body>
 		<header>
 			<h1>BONA PETITE</h1>
 			<nav>
 				<ul>
-					{% block headernavul %}
-					{% endblock %}
+					<li>
+						<a href="{% url 'index' %}">Home</a>
+					</li>
+					<li>
+						<a href="{% url 'about' %}">About</a>
+					</li>
+					<li>
+						<a href="{% url 'contact' %}">Contact</a>
+					</li>
+					{% if user.is_authenticated %}
+					<li>
+						<a href="{% url 'profile' %}">Profile</a>
+					</li>
+					<li>
+						<a href="{% url 'plantinfo' %}">Plant Info</a>
+					</li>
+					<li>
+						<a href="{% url 'logout' %}">Logout</a>
+					</li>
+					{% else %}
+					<li>
+						<a href="{% url 'register' %}">Register </a>
+					</li>
+					<li>
+						<a href="{% url 'login' %}">Login</a>
+					</li>
+					{% endif %}
 				</ul>
 			</nav>
 		</header>
