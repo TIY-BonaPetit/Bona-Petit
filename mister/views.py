@@ -82,7 +82,7 @@ def user_login(request):
         if user:
             if user.is_active:
                 login(request, user)
-                return HttpResponseRedirect('index')
+                return HttpResponseRedirect('plantinfo')
             else:
                 return HttpResponse("Your Bona Petite account is disabled.")
         else:

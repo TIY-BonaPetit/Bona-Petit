@@ -16,7 +16,7 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^login/$', views.user_login, name='login'),
     url(r'^logout/$', views.user_logout, name='logout'),
-    url(r'^login/index/$', views.index),
+    url(r'^login/plantinfo/$', views.collection),
     url(r'^logout/index/$', views.index),
     url(r'^profile/$', views.profile, name='profile'),
     url(r'^csv/$', views.data_csv, name='data_csv'),
