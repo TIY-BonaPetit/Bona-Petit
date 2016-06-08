@@ -21,9 +21,16 @@
 				</ul>
 			</nav>
 		</header>
-		{% block bodycontent %}
-		{% endblock %}
-		{% block footer %}
-		{% endblock %}
+
+		<div id='wrapper'>
+			{% block bodycontent %}
+			{% endblock %}
+		</div>
+
+		<footer>
+			{% block footer %}
+			{% endblock %}
+		</footer>
+
 	</body>
 </html>
