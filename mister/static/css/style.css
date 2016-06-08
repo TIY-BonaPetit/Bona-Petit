@@ -14,22 +14,40 @@ html {
     height: 100%;
 }
 
-body {
+body{
     font-family: 'Raleway', serif;
-    font-size: 20px;
-    padding-top: 70px;
-    text-align: center;
     height: 100%;
 }
 
+#wrapper {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -5em;
+    max-width: 1000px;
+    font-size: 1.25em;
+    padding-top: 5px;
+    text-align: center;
+}
+
 h1 {
-    font-size: 50px;
-    letter-spacing: 8px;
+    font-family: 'Roboto', serif;
+    font-weight: normal;
+    line-height: 1em;
+    letter-spacing: .2em;
     text-transform: uppercase;
 }
 
+h2 {
+    margin: 10px 0;
+    font-size: 1.5em;
+    font-weight: normal;
+    line-height: .8em;
+    letter-spacing: .1em;
+}
+
 p {
-    font-size: 22.5px;
+    font-size: 1em;
 }
 
 a {
@@ -43,6 +61,94 @@ a.selected {
 ul {
     list-style: none;
 }
+
+
+
+/****************************
+NAVIGATION
+****************************/
+
+nav {
+    text-align: center;
+    padding: 10px 0;
+    margin: 20px 0 0;
+}
+
+nav ul {
+    margin: 0 10px;
+    padding: 0;
+}
+
+nav li {
+    display: inline-block;
+    padding: 5px 5px;
+}
+
+nav a {
+    font-weight: 800;
+    padding: 5px 10px;
+}
+
+
+
+/****************************
+COLORS
+****************************/
+
+/* dark green background | white text */
+body {
+    background-color: #233A14;
+    color: #FFF;
+}
+
+/* light green text */
+/*.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+    color: #42DCA3;
+}*/
+
+/* white text */
+/*.navbar-default .navbar-brand {
+    color: #FFF;
+}*/
+
+/* medium gray background */
+/*.navbar-default {
+    background: #5C6B73;
+}*/
+
+/* white text */
+/*.navbar-default .navbar-nav>li>a {
+    color: #FFF;
+}*/
+
+/* white text */
+a {
+    color: #FFF;
+}
+
+/* light gray text */
+nav a, nav a:visited{
+    color: #DDD;
+}
+
+/* light green text */
+nav a.selected, nav a:hover {
+    color: #42DCA3;
+}
+
+/* light green border | light green text | no background */
+/*.btn-default {
+    border: 1px solid #42DCA3;
+    color: #42DCA3;
+    background-color: transparent;
+}*/
+
+/* light green border | white text | no background */
+/*.form-control {
+    border: 1px solid #42DCA3;
+    color: #FFF;
+    background-color: transparent;
+}*/
 
 
 
@@ -118,64 +224,3 @@ ul {
 .lower {
     margin-top: 250px;
 }*/
-
-
-
-/****************************
-COLORS
-****************************/
-
-/* medium gray background | white text */
-body {
-    background-color: #5C6B73;
-    color: #FFF;
-}
-
-/* light green text */
-.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
-    color: #42DCA3;
-}
-
-/* white text */
-.navbar-default .navbar-brand {
-    color: #FFF;
-}
-
-/* medium gray background */
-.navbar-default {
-    background: #5C6B73;
-}
-
-/* white text */
-.navbar-default .navbar-nav>li>a {
-    color: #FFF;
-}
-
-/* white text */
-a {
-    color: #FFF;
-}
-
-/* light gray text */
-nav a, nav a:visited{
-    color: #DDD;
-}
-
-/* light green text */
-nav a.selected, nav a:hover {
-    color: #42DCA3;
-}
-
-/* light green border | light green text | no background */
-.btn-default {
-    border: 1px solid #42DCA3;
-    color: #42DCA3;
-    background-color: transparent;
-}
-
-/* light green border | white text | no background */
-.form-control {
-    border: 1px solid #42DCA3;
-    color: #FFF;
-    background-color: transparent;
-}

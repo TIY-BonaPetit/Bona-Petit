@@ -1,6 +1,23 @@
 {% extends 'base.html' %}
-{% block title %}About - {{ block.super }}{% endblock %}
-{% block content %}
+{% block title %}
+	About - {{ block.super }}
+{% endblock %}
+
+{% block headernavul %}
+	<li><a href="{% url 'index' %}">Home</a></li>
+	<li><a href="{% url 'about' %}" class='selected'>About</a></li>
+	<li><a href="{% url 'contact' %}">Contact</a></li>
+	{% if user.is_authenticated %}
+	<li><a href="{% url 'profile' %}">Profile</a></li>
+	<li><a href="{% url 'plantinfo' %}">Plant Info</a></li>
+	<li><a href="{% url 'logout' %}">Logout</a></li>
+	{% else %}
+	<li><a href="{% url 'register' %}">Register </a></li>
+	<li><a href="{% url 'login' %}">Login</a></li>
+	{% endif %}
+{% endblock %}
+
+{% block bodycontent %}
 <h1> History </h1>
 <p>Hydroponics is a subset of hydroculture and is a method of growing plants using mineral nutrient solutions, in water, without soil.
 

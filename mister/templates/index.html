@@ -1,6 +1,22 @@
 {% extends 'base.html' %}
-{% block title %}Homepage - {{ block.super }}{% endblock %}
-{% block content %}
-		<p> The Future of Hydroponic Farms is here! </p>
-		<p>Bona Petite is a play on words meaning “a little good”. And that’s what we hope to accomplish with our program. We’re building a computer system that monitors an environment to ensure optimal conditions for a growth. This concept is designed with hydroponics in mind, but can easily be integrated into other environments. The sensor hardware in use is managed by specialized C/C++ scripts designed for Arduino micro-controllers. A RaspberryPi computer, using a custom Python script, acts as a bridge between our micro-controller and a web database deployed with Heroku.</p>
+{% block title %}
+	Homepage - {{ block.super }}
+{% endblock %}
+
+{% block headernavul %}
+	<li><a href="{% url 'index' %}" class='selected'>Home</a></li>
+	<li><a href="{% url 'about' %}">About</a></li>
+	<li><a href="{% url 'contact' %}">Contact</a></li>
+	{% if user.is_authenticated %}
+	<li><a href="{% url 'profile' %}">Profile</a></li>
+	<li><a href="{% url 'plantinfo' %}">Plant Info</a></li>
+	<li><a href="{% url 'logout' %}">Logout</a></li>
+	{% else %}
+	<li><a href="{% url 'register' %}">Register </a></li>
+	<li><a href="{% url 'login' %}">Login</a></li>
+	{% endif %}
+{% endblock %}
+
+{% block bodycontent %}
+	<p>The Future of Hydroponic Farms is here!</p>
 {% endblock %}
