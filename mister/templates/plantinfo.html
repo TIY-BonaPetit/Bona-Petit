@@ -2,6 +2,7 @@
 {% block title %}Plant Info - {{ block.super }}{% endblock %}
 {% block content %}
 	{% if user.is_authenticated %}
+	<h1> Bona Petite, {{user.username}}!</h1>
 		{% for collector in data %}
 		<h1>Instance<h1>
 		<p>Time Collected: {{collector.time_collected}}</p>
