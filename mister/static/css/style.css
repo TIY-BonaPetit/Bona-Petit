@@ -42,6 +42,67 @@ ul {
 
 
 
+/****************************
+COLORS
+****************************/
+
+/* dark green background | white text */
+body {
+    background-color: #005502;
+    color: #FFF;
+}
+
+/* light green text */
+/*.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+    color: #42DCA3;
+}*/
+
+/* white text */
+/*.navbar-default .navbar-brand {
+    color: #FFF;
+}*/
+
+/* medium gray background */
+/*.navbar-default {
+    background: #5C6B73;
+}*/
+
+/* white text */
+/*.navbar-default .navbar-nav>li>a {
+    color: #FFF;
+}*/
+
+/* white text */
+a {
+    color: #FFF;
+}
+
+/* light gray text */
+nav a, nav a:visited{
+    color: #DDD;
+}
+
+/* light green text */
+nav a.selected, nav a:hover {
+    color: #42DCA3;
+}
+
+/* light green border | light green text | no background */
+/*.btn-default {
+    border: 1px solid #42DCA3;
+    color: #42DCA3;
+    background-color: transparent;
+}*/
+
+/* light green border | white text | no background */
+/*.form-control {
+    border: 1px solid #42DCA3;
+    color: #FFF;
+    background-color: transparent;
+}*/
+
+
+
 /*****************************
  * NAV BAR                   *
  *****************************/
@@ -114,64 +175,3 @@ ul {
 .lower {
     margin-top: 250px;
 }*/
-
-
-
-/****************************
-COLORS
-****************************/
-
-/* medium gray background | white text */
-body {
-    background-color: #5C6B73;
-    color: #FFF;
-}
-
-/* light green text */
-.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
-    color: #42DCA3;
-}
-
-/* white text */
-.navbar-default .navbar-brand {
-    color: #FFF;
-}
-
-/* medium gray background */
-.navbar-default {
-    background: #5C6B73;
-}
-
-/* white text */
-.navbar-default .navbar-nav>li>a {
-    color: #FFF;
-}
-
-/* white text */
-a {
-    color: #FFF;
-}
-
-/* light gray text */
-nav a, nav a:visited{
-    color: #DDD;
-}
-
-/* light green text */
-nav a.selected, nav a:hover {
-    color: #42DCA3;
-}
-
-/* light green border | light green text | no background */
-.btn-default {
-    border: 1px solid #42DCA3;
-    color: #42DCA3;
-    background-color: transparent;
-}
-
-/* light green border | white text | no background */
-.form-control {
-    border: 1px solid #42DCA3;
-    color: #FFF;
-    background-color: transparent;
-}
