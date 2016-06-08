@@ -2,4 +2,34 @@
 {% block title %}Homepage - {{ block.super }}{% endblock %}
 {% block content %}
 		<p> The Future of Hydroponic Farms is here! </p>
+<h1>History</h1>
+Hydroponics is a subset of hydroculture and is a method of growing plants using mineral nutrient solutions, in water, without soil.
+The word hydroponics technically means working water, stemming from the Latin words "hydro" meaning water, and "ponos" meaning labor. 
+Advantages of Hydroponics:
+Shorter growth cycles while producing higher yields
+Reduction of cost and processing
+Effortless labor 
+Consistent, better tasting crops
+Various environmental concerns, reduction in arable land, and scarcity of water can be easily conquered with the use of hydroponics.
+</p>
+<h2>The Problem</h2>
+<p>
+While Hydroponic farming has many advantages, one of the key disadvantages to this farming technique is the constant need to monitor key indicators of the plant’s growth, such as {water salienty, air temperature, and nutrient content.} </p>
+<h3>The Solution</h3>
+<p>
+Bona Petite is a self-contained, plug and play component that is maintained with a series of Arduino controllers. Air temperature, pH level and nutrient levels are all maintained via the Arduino's. 
+
+The Arduino's are networked to a Raspberry Pi using I2C to allow all system parameters to be monitored and updated in real time. The Raspberry Pi is further used to maintain a historical log of all the systems running data and make it available via an API. 
+
+A companion web app interacts with the Raspberry Pi allowing monitoring your entire system from anywhere in the world.
+
+Benefits of Bona Petite:
+Maintained by micro-controllers (Raspberry Pi & Arduino)
+Plant nutrients and pH - monitor and alerts
+Temperature monitoring
+Smart and Connected
+Bona Petite web app
+Alert notifications via email when not ideal conditions
+</p>
+
 {% endblock %}
