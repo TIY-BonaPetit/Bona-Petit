@@ -1,16 +1,18 @@
+import csv
+
+from rest_framework import viewsets
+
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 from django.shortcuts import render, render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
-from .models import Collector, UserProfile
-import csv
-from rest_framework import viewsets
-from .serializers import CollectorSerializer
-from .forms import UserForm, UserProfileForm
 from django.template import RequestContext
-from django.contrib.auth import authenticate, login
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
-from mister.serializers import UserSerializer
+
+from .serializers import CollectorSerializer, UserSerializer
+from .forms import UserForm, UserProfileForm
+from .models import Collector, UserProfile
 
 
 def index(request):
@@ -18,7 +20,8 @@ def index(request):
 
 
 def collection(request):
-    data = Collector.objects.filter(user=request.user).order_by('-time_collected')
+    data = Collector.objects.filter(
+            user=request.user).order_by('-time_collected')
     return render(request, 'plantinfo.html', {'data': data})
 
 
@@ -37,6 +40,10 @@ class CollectionsViewSet(viewsets.ModelViewSet):
     queryset = Collector.objects.all().order_by('-pH_level')
     serializer_class = CollectorSerializer
 
+    def get_queryset(self):
+        return Collector.objects.filter(
+                user=self.request.user).order_by('-pH_level')
+
 
 def register(request):
     context = RequestContext(request)
@@ -50,25 +57,23 @@ def register(request):
             user.save()
             profile = profile_form.save(commit=False)
             profile.user = user
-
             profile.save()
-
             registered = True
         else:
-            print (user_form.errors, profile_form.errors)
+            print(user_form.errors, profile_form.errors)
     else:
         user_form = UserForm()
         profile_form = UserProfileForm()
+        payload = {'user_form': user_form,
+                   'profile_form': profile_form,
+                   'registered': registered}
+    return render_to_response('register.html', payload, context)
 
-    return render_to_response(
-            'register.html',
-            {'user_form': user_form, 'profile_form': profile_form, 'registered': registered},
-            context)
-        
-    
+
 @login_required
 def restricted(request):
     return HttpResponse("You're Logged In!")
+
 
 def user_login(request):
     context = RequestContext(request)
@@ -86,25 +91,22 @@ def user_login(request):
             else:
                 return HttpResponse("Your Bona Petite account is disabled.")
         else:
-            print ('Invalid login details: {}, {}'.format(username, password))
+            print('Invalid login details: {}, {}'.format(username, password))
             return HttpResponse("Invalid login details supplied.")
-
     else:
         return render_to_response('login.html', {}, context)
 
-from django.contrib.auth import logout
 
 @login_required
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect('index')
 
-from django.contrib.auth.models import User
 
 @login_required
 def profile(request):
     context = RequestContext(request)
-    cat_list = get_category_list()
+    cat_list = get_category_list()  # DOES THIS WORK?
     context_dict = {'cat_list': cat_list}
     u = User.objects.get(username=request.user)
 
@@ -116,6 +118,7 @@ def profile(request):
     context_dict['user'] = u
     context_dict['userprofile'] = up
     return render_to_response('profile.html', context_dict, context)
+
 
 def data_csv(request):
     response = HttpResponse(content_type='text/csv')
