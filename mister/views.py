@@ -11,12 +11,10 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from mister.serializers import UserSerializer
-from django.core.mail import send_mail
-from django.core.mail import EmailMultiAlternatives
+from django.core.mail import EmailMessage
 
-# send_mail("Your Subject", "This is a simple text email body.",
-#   "Yamil Asusta <hello@yamilasusta.com>", ["yamil@sendgrid.com"])
-
+# email = EmailMessage('title', 'body', to=[email])
+# email.send()
 
 def index(request):
     return render(request, 'index.html')
