@@ -19,9 +19,9 @@
 
 {% block bodycontent %}
 	{% if user.is_authenticated %}
-	<h1> Bona Petite, {{user.username}}!</h1>
+	<h2> Bona Petite, {{user.username}}!</h2>
 		{% for collector in data %}
-		<h1>Instance<h1>
+		<h3>Instance<h3>
 		<p>Time Collected: {{collector.time_collected}}</p>
 		<p>pH Level: {{collector.pH_level}}S</p>
 		<p>Temperature: {{collector.temperature}}°C</p>
