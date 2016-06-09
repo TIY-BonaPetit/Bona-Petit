@@ -68,13 +68,12 @@ def register(request):
     else:
         user_form = UserForm()
         profile_form = UserProfileForm()
-        payload = {'user_form': user_form,
-                   'profile_form': profile_form,
-                   'registered': registered}
 
     return render_to_response(
             'register.html',
-            payload,
+            {'user_form': user_form,
+             'profile_form': profile_form,
+             'registered': registered},
             context)
 
 
