@@ -71,9 +71,6 @@ TEMPLATES = [
     },
 ]
 
-EMAIL_BACKEND = "sgbackend.SendGridBackend"
-SENDGRID_USER = "bonapetite"
-SENDGRID_PASSWORD = "ironyard2016"
 
 WSGI_APPLICATION = 'bonapetite.wsgi.application'
 
