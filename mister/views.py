@@ -14,6 +14,12 @@ from .serializers import CollectorSerializer, UserSerializer
 from .forms import UserForm, UserProfileForm
 from .models import Collector, UserProfile
 
+from django.core.mail import send_mail
+from django.core.mail import EmailMultiAlternatives
+
+# send_mail("Your Subject", "This is a simple text email body.",
+#   "Yamil Asusta <hello@yamilasusta.com>", ["yamil@sendgrid.com"])
+
 
 def index(request):
     return render(request, 'index.html')
