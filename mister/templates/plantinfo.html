@@ -20,11 +20,9 @@
 {% block bodycontent %}
 	{% if user.is_authenticated %}
 	<h2> Bona Petite, {{user.username}}!</h2>
-		{% for collector in data %}
-		<h3>Instance<h3>
-		<p>Time Collected: {{collector.time_collected}}</p>
-		<p>pH Level: {{collector.pH_level}}S</p>
-		<p>Temperature: {{collector.temperature}}°C</p>
-		{% endfor %}
+		<h3>Latest Data<h3>
+		<p>Time Collected: {{latest.time_collected}}</p>
+		<p>EC Level: {{latest.pH_level}}S</p>
+		<p>Temperature: {{latest.temperature}}°C</p>
 	{% endif %}
 {% endblock %}
