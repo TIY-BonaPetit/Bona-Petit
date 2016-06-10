@@ -18,8 +18,9 @@
 
 {% block bodycontent %}
 <h2> History </h2>
-<p>Hydroponics is a subset of hydroculture and is a method of growing plants using mineral nutrient solutions, in water, without soil.
-<p>The word hydroponics technically means working water, stemming from the Latin words "hydro" meaning water, and "ponos" meaning labor.</p>
+<div class='textbox'>
+	<p>Hydroponics is a subset of hydroculture and is a method of growing plants using mineral nutrient solutions, in water, without soil. The word hydroponics technically means working water, stemming from the Latin words "hydro" meaning water, and "ponos" meaning labor.</p>
+</div>
 </br>
 <h2>Advantages of Hydroponics:</h2>
 <div id='aboutlist'>
@@ -34,21 +35,35 @@
 </div>
 
 <h2>The Problem</h2>
-<p>While Hydroponic farming has many advantages, one of the key disadvantages to this farming technique is the constant need to monitor key indicators of the plant’s growth, such as {water salienty, air temperature, and nutrient content.} </p>
+<div class='textbox'>
+	<p>While Hydroponic farming has many advantages, one of the key disadvantages
+		to this farming technique is the constant need to monitor key indicators
+		of the plant’s growth, such as water salienty, air temperature, and
+		nutrient content.</p>
+</div>
 
 <h2>The Solution</h2>
-<p>Bona Petite is a self-contained, plug and play component that is maintained with a series of Arduino controllers. Air temperature, pH level and nutrient levels are all maintained via the Arduino's.
+<div class='textbox'>
+	<p>Bona Petite is a self-contained, plug and play component that is maintained
+		with a series of Arduino controllers. Air temperature, pH level and nutrient
+		levels are all maintained via the Arduino's. The Arduino's are networked
+		to a Raspberry Pi using I2C to allow all system parameters to be monitored
+		and updated in real time. The Raspberry Pi is further used to maintain a
+		historical log of all the systems running data and make it available via
+		an API. A companion web app interacts with the Raspberry Pi allowing monitoring
+		your entire system from anywhere in the world.</p>
+</div>
 
-The Arduino's are networked to a Raspberry Pi using I2C to allow all system parameters to be monitored and updated in real time. The Raspberry Pi is further used to maintain a historical log of all the systems running data and make it available via an API.
 
-A companion web app interacts with the Raspberry Pi allowing monitoring your entire system from anywhere in the world.
 
 <h2>Benefits of Bona Petite:</h2>
-<ul>
-	<li><p>Maintained by micro-controllers (Raspberry Pi & Arduino)</p></li>
-	<li><p>pH and Temperature monitoring</p></li>
-	<li><p>Smart and Connected Bona Petite web app</p></li>
-	<li><p>Alert notifications via email when not ideal conditions are not met</p></li>
-<ul>
+<div id='aboutlist'>
+	<ul>
+		<li><p>Maintained by an Arduino micro-controller and a RaspberryPi motherboard</p></li>
+		<li><p>Solution concentration and temperature monitoring</p></li>
+		<li><p>Smart and connected Bona Petite web app</p></li>
+		<li><p>Alert notifications via email when ideal conditions are not met</p></li>
+	<ul>
+</div>
 </p>
 {% endblock %}

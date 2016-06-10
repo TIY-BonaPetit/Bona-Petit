@@ -55,16 +55,16 @@ h2 {
     margin: 1em 0 1em 0;
     font-size: 1.5em;
     font-weight: normal;
-    line-height: .8em;
-    letter-spacing: .1em;
+    line-height: 1.1em;
+    letter-spacing: .05em;
 }
 
 h3 {
     margin: .1em 0 .3em 0;
     font-size: 1.1em;
     font-weight: normal;
-    line-height: .8em;
-    letter-spacing: .1em;
+    line-height: .9em;
+    letter-spacing: .05em;
 }
 
 p {
