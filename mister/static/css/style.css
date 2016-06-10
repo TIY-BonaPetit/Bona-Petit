@@ -8,8 +8,8 @@
 
 html {
     height: 100% !important;
-    min-height: 480px;
-    min-width: 320px;
+    min-height: 450px;
+    min-width: 300px;
     overflow:scroll;
 }
 
@@ -63,28 +63,46 @@ header {
 }
 
 #logo {
-    margin: 0;
-    text-align: center;
+    float: left;
+    width:100%;
 }
+
+#logo-text {
+    float: left;
+    margin: 10px 5px 10px 15px;
+    width:60%;
+    width: 200px;
+}
+
+#logo-buttons {
+    float: right;
+    min-width:150px;
+    margin-right: 10px;
+}
+
 
 h1 {
     max-width: 350px;
-    margin: 25px 0 10px 25px;
+    width: 190px;
     font-family: 'Roboto', serif;
     font-weight: normal;
-    font-size: 2.5em;
+    font-size: 1.75em;
+    text-align: left;
     line-height: 1em;
-    letter-spacing: .2em;
+    letter-spacing: .05em;
     text-transform: uppercase;
+    margin: 5px 0 5px 0;
 }
 
 h2 {
-    margin: 0px 0 10px 25px;
+    max-width: 350px;
+    min-width: 190px;
     font-family: 'Roboto', serif;
     font-weight: normal;
-    font-size: 1.25em;
+    font-size: .75em;
+    text-align: left;
     line-height: 1em;
-    letter-spacing: .05em;
+    letter-spacing: .03em;
     text-transform: uppercase;
 }
 
@@ -92,16 +110,16 @@ a.button {
     -webkit-appearance: initial;
     border: 3px;
     border-style: solid;
-    border-radius: 10px;
+    border-radius: 5px;
+    border-color: #233A14;
     color: white;
-    margin: 5px;
-    padding: 10px 20px;
+    padding: 5px 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     font-weight: 700;
-    min-width: 60px;
+    width: 60px;
 }
 
 
@@ -131,9 +149,12 @@ NAVIGATION
 ****************************/
 
 nav {
+    display: block;
+    height: 60px;
     text-align: center;
-    margin: 20px 0 0;
+    margin: 75px 0 0;
     padding: 10px 0;
+    height: 30px;
 }
 
 nav ul {
@@ -183,9 +204,14 @@ header {
     border-color: #FFF;
 }
 
+/* dark green logo background */
+#logo {
+    background: #233A14;
+}
+
 /* medium green nav background */
 nav {
-    background: #259a48;
+    background: #259A48;
 }
 
 /* white logo */
@@ -195,7 +221,7 @@ h1, h2 {
 
 /* light gray nav links */
 nav a, nav a:visited{
-    color: #CCC;
+    color: #FF9;
 }
 
 /* light green text */
