@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.mail import EmailMessage
 
 
 # two separates models: temp and pH_levl?
@@ -12,6 +13,8 @@ class Collector(models.Model):
     def __str__(self):
         return str(self.pH_level)
 
+    class Meta:
+        get_latest_by = 'time_collected'
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User)

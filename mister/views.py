@@ -27,8 +27,8 @@ def index(request):
 
 def collection(request):
     filtered = Collector.objects.filter(user=request.user)
-    data = filtered.order_by('-time_collected')
-    return render(request, 'plantinfo.html', {'data': data})
+    latest = filtered.latest()
+    return render(request, 'plantinfo.html', {'latest': latest})
 
 
 class UserViewSet(viewsets.ModelViewSet):
