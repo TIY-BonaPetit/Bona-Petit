@@ -2,19 +2,19 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>
-			{% block title %}
-				Bona Petite Project
-			{% endblock %}
-		</title>
-		<link rel="stylesheet" href="{% static 'css/normalize.css' %}" />
-        <link href='https://fonts.googleapis.com/css?family=Raleway:400,700|Roboto' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" href="{% static 'css/style.css' %}" />
-		{% block header %}{% endblock %}
+		<meta charset='utf-8'>
+		<meta name='viewport' content='width=device-width', initial-scale='1.0'>
+		<link rel='stylesheet' href="{% static 'css/normalize.css' %}"/>
+        <link rel='stylesheet' href="https://fonts.googleapis.com/css?family=Raleway:400,700|Roboto" type='text/css'/>
+		<link rel='stylesheet' href="{% static 'css/style.css' %}"/>
+		<link rel='stylesheet' href="{% static 'css/responsive.css' %}"/>
+		<title>{% block title %}Bona Petite{% endblock %}</title>
 	</head>
 	<body>
 		<header>
-			<h1>BONA PETITE</h1>
+			<a href="{% url 'index' %}" id='logo'>
+				<h1>BONA PETITE</h1>
+			</a>
 			<nav>
 				<ul>
 					{% block headernavul %}
@@ -22,16 +22,14 @@
 				</ul>
 			</nav>
 		</header>
-
 		<div id='wrapper'>
 			{% block bodycontent %}
 			{% endblock %}
 		</div>
-
+		<div class='push'></div>
 		<footer>
 			{% block footer %}
 			{% endblock %}
 		</footer>
-
 	</body>
 </html>
