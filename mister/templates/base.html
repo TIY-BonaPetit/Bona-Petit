@@ -12,9 +12,21 @@
 	</head>
 	<body>
 		<header>
-			<a href="{% url 'index' %}" id='logo'>
+			<a href="{% url 'index' %}" id='logo-left'>
 				<h1>BONA PETITE</h1>
+				<h2>Making America Great Again</h2>
 			</a>
+			<div id='logo-right'>
+				<ul>
+					{% if user.is_authenticated %}
+					<li><a href="{% url 'plantinfo' %}" class='button'>Plant Info</a></li>
+					<li><a href="{% url 'logout' %}" class='button'>Logout</a></li>
+					{% else %}
+					<li><a href="{% url 'register' %}" class='button'>Register </a></li>
+					<li><a href="{% url 'login' %}" class='button'>Login</a></li>
+					{% endif %}
+				</ul>
+			</div>
 			<nav>
 				<ul>
 					{% block headernavul %}

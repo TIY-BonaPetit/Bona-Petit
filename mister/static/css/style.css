@@ -1,5 +1,5 @@
 /*****************************
- * CONTENT                   *
+ * GENERAL                   *
  *****************************/
 
 * {
@@ -12,7 +12,6 @@ html {
     min-width: 320px;
     overflow:scroll;
 }
-
 
 body{
     height: 100%;
@@ -41,28 +40,6 @@ img {
     max-width: 100%;
 }
 
-h2 {
-    margin: 1em 0 1em 0;
-    font-size: 1.5em;
-    font-weight: normal;
-    line-height: 1.1em;
-    letter-spacing: .05em;
-}
-
-h3 {
-    margin: .1em 0 .3em 0;
-    font-size: 1.1em;
-    font-weight: normal;
-    line-height: .9em;
-    letter-spacing: .05em;
-}
-
-p {
-    font-size: 0.8em;
-    font-weight: normal;
-    line-height: 1em;
-}
-
 ul {
     list-style: none;
 }
@@ -70,7 +47,7 @@ ul {
 
 
 /****************************
- * Header                   *
+ * HEADER                   *
  ****************************/
 
 header {
@@ -91,13 +68,60 @@ header {
 }
 
 h1 {
-    margin: 25px 0;
+    max-width: 350px;
+    margin: 25px 0 10px 25px;
     font-family: 'Roboto', serif;
     font-weight: normal;
     font-size: 2.5em;
     line-height: 1em;
     letter-spacing: .2em;
     text-transform: uppercase;
+}
+
+h2 {
+    margin: 0px 0 10px 25px;
+    font-family: 'Roboto', serif;
+    font-weight: normal;
+    font-size: 1.25em;
+    line-height: 1em;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+}
+
+a.button {
+    -webkit-appearance: initial;
+    border: 3px;
+    border-style: solid;
+    border-radius: 10px;
+    color: white;
+    margin: 5px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 700;
+    min-width: 60px;
+}
+
+
+
+/****************************
+ * CONTENT                  *
+ ****************************/
+
+h3 {
+    margin: .1em 0 .3em 0;
+    font-size: 1.1em;
+    font-weight: normal;
+    line-height: .9em;
+    letter-spacing: .05em;
+}
+
+p {
+    font-size: 0.8em;
+    font-weight: normal;
+    line-height: 1em;
 }
 
 
@@ -124,6 +148,7 @@ nav li {
 
 nav a {
     font-weight: 700;
+    font-size: 16px;
     padding: 5px 10px;
 }
 
@@ -133,12 +158,18 @@ nav a {
  * FOOTER                   *
  ****************************/
 
+/*NOTHING YET*/
 
 
 
 /****************************
  * COLORS                   *
  ****************************/
+
+/* white text default */
+html {
+    color: #FFF;
+}
 
 /* dark green background | white text */
 body {
@@ -154,16 +185,11 @@ header {
 
 /* medium green nav background */
 nav {
-    background: #599a68;
+    background: #259a48;
 }
 
 /* white logo */
-h1 {
-    color: #FFF;
-}
-
-/* white links */
-a {
+h1, h2 {
     color: #FFF;
 }
 
@@ -173,6 +199,12 @@ nav a, nav a:visited{
 }
 
 /* light green text */
-nav a.selected, nav a:hover {
+a.button:hover, nav a.selected, nav a:hover {
     color: #42DCA3;
+    border-color: #FFF;
+}
+
+/* medium green button background */
+a.button {
+    background-color: #259a48;
 }
