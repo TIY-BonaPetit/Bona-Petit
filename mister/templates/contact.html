@@ -10,15 +10,11 @@
 	<li><a href="{% url 'contact' %}" class='selected'>Contact</a></li>
 	{% if user.is_authenticated %}
 	<li><a href="{% url 'plantinfo' %}">Plant Info</a></li>
-	<li><a href="{% url 'logout' %}">Logout</a></li>
-	{% else %}
-	<li><a href="{% url 'register' %}">Register </a></li>
-	<li><a href="{% url 'login' %}">Login</a></li>
 	{% endif %}
 {% endblock %}
 
 {% block bodycontent %}
-		<h2>Fund/Hire/Contact Us!</h2>
+		<h3>Fund/Hire/Contact Us!</h3>
 		<p> Greg Johnston: greg.a.johnston@gmail.com</p>
 		<p> David Mohrmann: dtmohrmann@gmail.com</p>
 		<p> Scott Robertson: the.scott.rob@gmail.com</p>
