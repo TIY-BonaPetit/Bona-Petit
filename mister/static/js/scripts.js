@@ -1,7 +1,7 @@
 
 // //grab the json data
 var data = d3.json("/api/mister/")
-.header("X-CSRF-Token", csrftoken)
+.header("X-CSRF-Token", {% csrf_token %})
 .get(function(error, json) {
   //error callback
   if (error) return console.warn(error);
