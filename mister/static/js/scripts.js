@@ -1,6 +1,6 @@
 
 // //grab the json data
-function graphs(){ d3.json("/api/mister/")
+var graphs =  setInterval( function(){ d3.json("/api/mister/")
 .get(function(error, json) {
   //error callback
   if (error) return console.warn(error);
@@ -275,6 +275,4 @@ function graphs(){ d3.json("/api/mister/")
      });
 
 
-})};//end ajax;
-
-setInterval( graphs(), 1000);//end timeout
+})}, 1000);//end ajax;
