@@ -1,6 +1,8 @@
 
 // //grab the json data
-var data = d3.json("http://bonapetite.herokuapp.com/api/mister/", function(error, json) {
+var data = d3.json("/api/mister/")
+.header("X-CSRF-Token", csrftoken)
+.get(function(error, json) {
   //error callback
   if (error) return console.warn(error);
   //set svg data as json payload
@@ -274,4 +276,4 @@ var data = d3.json("http://bonapetite.herokuapp.com/api/mister/", function(error
      });
 
 
-});
+})//end ajax;
