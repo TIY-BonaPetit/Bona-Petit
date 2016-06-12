@@ -23,7 +23,9 @@
 	<!-- change this to allow whatever crop_Type is selected to be inserted -->
 		<h3>Latest Reading for Bibb Lettuce<h3>
 		<p>Time Collected: {{latest.time_collected}}</p>
+		<div id="temp-graph"></div>
 		<p>EC Level: {{latest.pH_level}}S</p>
+		<div id="ec-graph"></div>
 		<p>Temperature: {{latest.temperature}}°C</p>
 	{% endif %}
 {% endblock %}
