@@ -135,6 +135,12 @@
 
 
     var refreshTempGraph = setInterval( function(){
+      d3.json("/api/mister/")
+     .get(function(error, json) {
+       //error callback
+       if (error) return console.warn(error);
+       //set svg data as json payload
+       var data = json.results;
       //append temp data line
       svg.append("svg:path")
         .attr("d", line(data))
@@ -163,10 +169,9 @@
           .style("opacity", 0)
           .style("display", "none")
         });
+      }//end get
+    }, 1000);//end timer
 
-    }, 1000);
-
-    refreshTempGraph()
 
     //create empty/invisible div to for as to have DOM attachment for tooltip
     var tempTooltip = d3.select("body")
@@ -252,6 +257,13 @@
      .interpolate("linear");
 
     var refreshECGraph = setInterval( function(){
+
+      d3.json("/api/mister/")
+     .get(function(error, json) {
+       //error callback
+       if (error) return console.warn(error);
+       //set svg data as json payload
+       var data = json.results;
       //append ec data line
       ecg.append("svg:path")
        .attr("d", ecLine(data))
@@ -281,7 +293,7 @@
          .style("display", "none")
        });
 
-
+     }//end get
     }, 1000)
 
     refreshECGraph();
