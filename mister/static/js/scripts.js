@@ -1,6 +1,6 @@
 
 // //grab the json data
-var graphs =  setInterval( function(){ d3.json("/api/mister/")
+ d3.json("/api/mister/")
 .get(function(error, json) {
   //error callback
   if (error) return console.warn(error);
@@ -133,34 +133,40 @@ var graphs =  setInterval( function(){ d3.json("/api/mister/")
        .y(function(d){ return y(tempFn(d))})
        .interpolate("linear");
 
-    //append temp data line
-    svg.append("svg:path")
-      .attr("d", line(data))
-      .style("stroke", "limegreen");
 
-    //append temp data as circles
-    svg.selectAll("circle").data(data).enter()
-      .append("svg:circle")
-      .attr("r", 4)
-      .attr("cx", function(d){ return x(dateFn(d))})
-      .attr("cy", function(d){ return y(tempFn(d))})
-      .style("stroke", "limegreen")
-      .style("fill", "white")
-      .on("mouseover", function(d){//add tooltips to display temp/time data on hover over each data point
+    var refreshTempGraph = setInterval( function(){
+      //append temp data line
+      svg.append("svg:path")
+        .attr("d", line(data))
+        .style("stroke", "limegreen");
+
+      //append temp data as circles
+      svg.selectAll("circle").data(data).enter()
+        .append("svg:circle")
+        .attr("r", 4)
+        .attr("cx", function(d){ return x(dateFn(d))})
+        .attr("cy", function(d){ return y(tempFn(d))})
+        .style("stroke", "limegreen")
+        .style("fill", "white")
+        .on("mouseover", function(d){//add tooltips to display temp/time data on hover over each data point
+            tempTooltip.transition()
+            .duration(200)
+            .style("opacity", 0.7)
+            .style("display", "block")
+            tempTooltip.html("<div id='temp-tooltip'><span><b>" + d.temperature + "</b>°C</span><br><span>Taken <b>" + d.time_collected + "</b></span></div>")
+            .style("left", (d3.event.pageX) + "px")
+            .style("top", (d3.event.pageY - 78) + "px")
+        })
+        .on("mouseout", function(d){
           tempTooltip.transition()
           .duration(200)
-          .style("opacity", 0.7)
-          .style("display", "block")
-          tempTooltip.html("<div id='temp-tooltip'><span><b>" + d.temperature + "</b>°C</span><br><span>Taken <b>" + d.time_collected + "</b></span></div>")
-          .style("left", (d3.event.pageX) + "px")
-          .style("top", (d3.event.pageY - 78) + "px")
-      })
-      .on("mouseout", function(d){
-        tempTooltip.transition()
-        .duration(200)
-        .style("opacity", 0)
-        .style("display", "none")
-      });
+          .style("opacity", 0)
+          .style("display", "none")
+        });
+
+    }, 1000);
+
+    refreshTempGraph()
 
     //create empty/invisible div to for as to have DOM attachment for tooltip
     var tempTooltip = d3.select("body")
@@ -245,34 +251,39 @@ var graphs =  setInterval( function(){ d3.json("/api/mister/")
      .y(function(d){ return ecY(ecFn(d))})
      .interpolate("linear");
 
-    //append temp data line
-    ecg.append("svg:path")
-     .attr("d", ecLine(data))
-     .style("stroke", "limegreen");
+    var refreshECGraph = setInterval( function(){
+      //append ec data line
+      ecg.append("svg:path")
+       .attr("d", ecLine(data))
+       .style("stroke", "limegreen");
 
-   //append ec data as circles
-   ecg.selectAll("circle").data(data).enter()
-     .append("svg:circle")
-     .attr("r", 4)
-     .attr("cx", function(d){ return x(dateFn(d))})
-     .attr("cy", function(d){ return ecY(ecFn(d))})
-     .style("stroke", "limegreen")
-     .style("fill", "white")
-     .on("mouseover", function(d){//add tooltips to display temp/time data on hover over each data point
+     //append ec data as circles
+     ecg.selectAll("circle").data(data).enter()
+       .append("svg:circle")
+       .attr("r", 4)
+       .attr("cx", function(d){ return x(dateFn(d))})
+       .attr("cy", function(d){ return ecY(ecFn(d))})
+       .style("stroke", "limegreen")
+       .style("fill", "white")
+       .on("mouseover", function(d){//add tooltips to display temp/time data on hover over each data point
+           tempTooltip.transition()
+           .duration(200)
+           .style("opacity", 0.7)
+           .style("display", "block")
+           tempTooltip.html("<div id='temp-tooltip'><span><b>" + d.pH_level + " </b>µS/cm </span><br><span>Taken <b>" + d.time_collected + "</b></span></div>")
+           .style("left", (d3.event.pageX) + "px")
+           .style("top", (d3.event.pageY - 78) + "px")
+       })
+       .on("mouseout", function(d){
          tempTooltip.transition()
          .duration(200)
-         .style("opacity", 0.7)
-         .style("display", "block")
-         tempTooltip.html("<div id='temp-tooltip'><span><b>" + d.pH_level + " </b>µS/cm </span><br><span>Taken <b>" + d.time_collected + "</b></span></div>")
-         .style("left", (d3.event.pageX) + "px")
-         .style("top", (d3.event.pageY - 78) + "px")
-     })
-     .on("mouseout", function(d){
-       tempTooltip.transition()
-       .duration(200)
-       .style("opacity", 0)
-       .style("display", "none")
-     });
+         .style("opacity", 0)
+         .style("display", "none")
+       });
 
 
-})}, 1000);//end ajax;
+    }, 1000)
+
+    refreshECGraph();
+
+});
