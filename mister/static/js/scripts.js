@@ -1,7 +1,6 @@
 
 // //grab the json data
-var data = d3.json("/api/mister/")
-.header("X-CSRF-Token", {% csrf_token %})
+function graphs(){ d3.json("/api/mister/")
 .get(function(error, json) {
   //error callback
   if (error) return console.warn(error);
@@ -81,7 +80,7 @@ var data = d3.json("/api/mister/")
     svg.append("text")
       .attr("text-anchor", "middle")
       .attr("transform", "translate("+(width/2)+","+(height+margins.bottom/3)+")")
-      .text("Time (Seconds)");
+      .text("Time (Hours/Minutes/Seconds)");
 
     //append y axis label
     svg.append("text")
@@ -276,4 +275,6 @@ var data = d3.json("/api/mister/")
      });
 
 
-})//end ajax;
+})};//end ajax;
+
+setInterval( graphs(), 1000);//end timeout
