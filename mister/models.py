@@ -32,15 +32,15 @@ class Collector(models.Model):
             self.send_alert_email_low_ec()
 
     def is_approaching_high_temp_threshold(self):
-        return self.temperature >= 27 
+        return self.temperature >= 27
 
-    def is_approaching_low_temp_threshold(self):    
+    def is_approaching_low_temp_threshold(self):
         return self.temperature <= 23
 
     def is_approaching_high_ec_threshold(self):
-        return self.ec_level >= 1080  
+        return self.ec_level >= 1080
 
-    def is_approaching_low_ec_threshold(self):    
+    def is_approaching_low_ec_threshold(self):
         return self.ec_level <= 320
 
     def is_approaching_temp_and_ec_threshold(self):
