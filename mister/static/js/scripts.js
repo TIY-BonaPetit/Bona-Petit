@@ -169,7 +169,7 @@
           .style("opacity", 0)
           .style("display", "none")
         });
-      }//end get
+      })//end get
     }, 1000);//end timer
 
 
@@ -293,7 +293,7 @@
          .style("display", "none")
        });
 
-     }//end get
+     })//end get
     }, 1000)
 
     // refreshECGraph();
