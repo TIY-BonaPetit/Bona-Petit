@@ -17,8 +17,8 @@ class Collector(models.Model):
     class Meta:
         get_latest_by = 'time_collected'
 
-    def save(self, force_insert=False, force_update=False):
-        super().save(force_insert=force_insert, force_update=force_update)
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
 
         if self.is_approaching_temp_and_ec_threshold():
             self.send_alert_email_temp_and_ec()
