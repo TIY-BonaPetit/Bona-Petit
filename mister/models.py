@@ -3,11 +3,11 @@ from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
 
 
-# two separates models: temp and pH_levl?
+# two separates models: temp and ec_levl?
 class Collector(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    ec_level = models.FloatField()
-    temperature = models.FloatField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
+    ec_level = models.FloatField(default=0)
+    temperature = models.FloatField(default=0)
     time_collected = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -26,7 +26,7 @@ class Collector(models.Model):
     # if EC >= 1080 or EC =< 320:
         # call email function (EC alert)
     # def both_approaching_threshold(self):
-    # if temperature >= 27 or temperature <= 23 AND pH_level >= 1080 or pH_level <= 320:
+    # if temperature >= 27 or temperature <= 23 AND ec_level >= 1080 or ec_level <= 320:
         # call email function (dire alert! need to check your system ASAP)
 
     # if email_sent, need to count minutes, if temp or ec still approaching threshold, resend email every 10 mins.
