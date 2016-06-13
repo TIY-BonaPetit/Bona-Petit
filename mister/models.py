@@ -22,30 +22,48 @@ class Collector(models.Model):
 
         if self.is_approaching_temp_and_ec_threshold():
             self.send_alert_email_temp_and_ec()
-        elif self.is_approaching_temp_threshold():
-            self.send_alert_email_temp()
-        elif self.is_approaching_ec_threshold():
-            self.send_alert_email_ec()
+        elif self.is_approaching_high_temp_threshold():
+            self.send_alert_email_high_temp()
+        elif self.is_approaching_low_temp_threshold():
+            self.send_alert_email_low_temp()
+        elif self.is_approaching_high_ec_threshold():
+            self.send_alert_email_high_ec()
+        elif self.is_approaching_low_ec_threshold():
+            self.send_alert_email_low_ec()
 
-    def is_approaching_temp_threshold(self):
-        return self.temperature >= 27 or self.temperature <= 23
+    def is_approaching_high_temp_threshold(self):
+        return self.temperature >= 27 
 
-    def is_approaching_ec_threshold(self):
-        return self.ec_level >= 1080 or self.ec_level <= 320
+    def is_approaching_low_temp_threshold(self):    
+        return self.temperature <= 23
+
+    def is_approaching_high_ec_threshold(self):
+        return self.ec_level >= 1080  
+
+    def is_approaching_low_ec_threshold(self):    
+        return self.ec_level <= 320
 
     def is_approaching_temp_and_ec_threshold(self):
-        return self.is_approaching_ec_threshold() and self.is_approaching_temp_threshold()
+        return self.is_approaching_high_ec_threshold() or self.is_approaching_low_ec_threshold and self.is_approaching_high_temp_threshold() or self.is_approaching_low_temp_threshold()
 
-    def send_alert_email_temp(self):
-        email = EmailMessage('Check temp', 'temp', to=['farmerphil2016@gmail.com']) #put in user id future
+    def send_alert_email_high_temp(self):
+        email = EmailMessage('Bona Petite Alert: High Temperature!', 'Hi, you need to check your plants as the monitoring system has detected that the temperature is approaching the height of the ideal temperature range', to=['farmerphil2016@gmail.com']) #put in user id future
         email.send()
 
-    def send_alert_email_ec(self):
-        email = EmailMessage('Check ec', 'EC', to=['farmerphil2016@gmail.com']) #put in user id future
+     def send_alert_email_low_temp(self):
+        email = EmailMessage('Bona Petite Alert: Low Temperature!', 'Hi, you need to check your plants as the monitoring system has detected that the temperature is approaching the low of the ideal temperature range', to=['farmerphil2016@gmail.com']) #put in user id future
+        email.send()
+
+    def send_alert_email_high_ec(self):
+        email = EmailMessage('Bona Petite Alert: High EC!', 'Hi, you need to check your plants as the monitoring system has detected that the EC level is approaching the high of the ideal EC range', to=['farmerphil2016@gmail.com']) #put in user id future
+        email.send()
+
+     def send_alert_email_low_ec(self):
+        email = EmailMessage('Bona Petite Alert: Low EC!', 'Hi, you need to check your plants as the monitoring system has detected that the EC level is approaching the high of the ideal EC range', to=['farmerphil2016@gmail.com']) #put in user id future
         email.send()
 
     def send_alert_email_temp_and_ec(self):
-        email = EmailMessage('Check temp and ec', 'temp and ec', to=['farmerphil2016@gmail.com']) #put in user id future
+        email = EmailMessage('Bona Petite Alert: Temperature and EC!', 'There is a really good chance that your plants are dead because both the EC value and temperature are outside the ideal conditions range', to=['farmerphil2016@gmail.com']) #put in user id future
         email.send()
 
     # if email_sent, need to count minutes, if temp or ec still approaching threshold, resend email every 10 mins.
