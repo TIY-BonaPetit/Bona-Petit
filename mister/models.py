@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
 
 
+
+
 # two separates models: temp and ec_levl?
 class Collector(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
@@ -17,16 +19,18 @@ class Collector(models.Model):
     class Meta:
         get_latest_by = 'time_collected'
 
-    # def save(self):
-    #     super().save()
-    #     if self.temp_is_approaching_threshold():
-    #         return self.send_alert_email()
+    def save(self):
+        super().save()
 
-    # def temp_is_approaching_threshold(self):
-    #     if self.temperature >= 27 or self.temperature <= 23:
-    #         return self.send_alert_email_temp()
-    #     else:
-    #         return False
+        if self.is_approaching_temp_threshold():
+            return self.send_alert_email_temp()
+
+    def is_approaching_temp_threshold(self):
+        return self.temperature >= 27 or self.temperature <= 23
+
+    def send_alert_email_temp(self):
+        email = EmailMessage('Check temp', 'temp', to=['farmerphil2016@gmail.com'])
+        email.send()
 
     # def ec_is_approaching_threshold(self):
     #     if self.ec_level >=1080 or self.ec_level <= 320:
