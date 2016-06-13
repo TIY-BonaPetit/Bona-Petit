@@ -17,8 +17,33 @@ class Collector(models.Model):
     class Meta:
         get_latest_by = 'time_collected'
 
+    # def save(self):
+    #     super().save()
+    #     if self.temp_is_approaching_threshold():
+    #         return self.send_alert_email()
 
-    # function for calling the email in the Collector models. look at pic on phone from bryce. Collector.save() and .super() stuff
+    # def temp_is_approaching_threshold(self):
+    #     if self.temperature >= 27 or self.temperature <= 23:
+    #         return self.send_alert_email_temp()
+    #     else:
+    #         return False
+
+    # def ec_is_approaching_threshold(self):
+    #     if self.ec_level >=1080 or self.ec_level <= 320:
+    #         reuturn self.send_alert_email_ec ()
+    #     else:
+    #         return False
+
+    # def ec_temp_both_approaching_threshold(self):
+    #     if self.ec_level >= 1080 or self.ec_level <=320 and self.temperature >=27 or self.temperature <=23:
+    #         return self.send_alert_email_ec_temp ()
+    #     else:
+    #         return False
+
+    # def  
+
+
+    # # function for calling the email in the Collector models. look at pic on phone from bryce. Collector.save() and .super() stuff
     # def temp_is_approaching_threshold(self):
     # if temperature >= 27 or temperature =< 23:
         # call email function (temperature alert)
