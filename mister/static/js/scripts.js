@@ -164,9 +164,11 @@
           .style("display", "none")
         });
 
+        console.log('hi')
+
     }, 1000);
 
-    refreshTempGraph()
+    // refreshTempGraph()
 
     //create empty/invisible div to for as to have DOM attachment for tooltip
     var tempTooltip = d3.select("body")
@@ -284,6 +286,6 @@
 
     }, 1000)
 
-    refreshECGraph();
+    // refreshECGraph();
 
 });
