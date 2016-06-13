@@ -44,7 +44,8 @@ class Collector(models.Model):
         return self.ec_level <= 320
 
     def is_approaching_temp_and_ec_threshold(self):
-        return self.is_approaching_high_ec_threshold() or self.is_approaching_low_ec_threshold and self.is_approaching_high_temp_threshold() or self.is_approaching_low_temp_threshold()
+        return (self.is_approaching_high_ec_threshold() or self.is_approaching_low_ec_threshold()) and
+            (self.is_approaching_high_temp_threshold() or self.is_approaching_low_temp_threshold())
 
     def send_alert_email_high_temp(self):
         email = EmailMessage('Bona Petite Alert: High Temperature!', 'Hi, you need to check your plants as the monitoring system has detected that the temperature is approaching the height of the ideal temperature range', to=['farmerphil2016@gmail.com']) #put in user id future
