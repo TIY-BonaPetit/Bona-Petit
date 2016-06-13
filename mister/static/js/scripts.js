@@ -93,7 +93,7 @@ d3.json("/api/mister/")
       .attr("x",0 - (height / 2))
       .attr("dy", "1em")
       .style("text-anchor", "middle")
-      .text("Temperatue (Celcius)");
+      .text("Temperatue (Celsius)");
 
     //max temperature range line
     svg.append("svg:line")
