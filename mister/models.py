@@ -6,12 +6,13 @@ from django.core.mail import EmailMessage
 # two separates models: temp and pH_levl?
 class Collector(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    pH_level = models.FloatField()
+    ec_level = models.FloatField()
     temperature = models.FloatField()
     time_collected = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return str(self.pH_level)
+        return "EC: {}, Temp: {}".format(
+                str(self.ec_level), str(self.temperature))
 
     class Meta:
         get_latest_by = 'time_collected'
@@ -23,7 +24,7 @@ class Collector(models.Model):
         # call email function (temperature alert)
     # def EC_is_approaching_threshold(self):
     # if EC >= 1080 or EC =< 320:
-        # call email function (EC alert) 
+        # call email function (EC alert)
     # def both_approaching_threshold(self):
     # if temperature >= 27 or temperature <= 23 AND pH_level >= 1080 or pH_level <= 320:
         # call email function (dire alert! need to check your system ASAP)

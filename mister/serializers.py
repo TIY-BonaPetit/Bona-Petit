@@ -15,5 +15,5 @@ class CollectorSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Collector
-        fields = ('user', 'pH_level', 'temperature', 'time_collected')
+        fields = ('user', 'ec_level', 'temperature', 'time_collected')
         read_only_fields = ('user', )
