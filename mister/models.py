@@ -43,15 +43,15 @@ class Collector(models.Model):
     def is_approaching_low_ec_threshold(self):    
         return self.ec_level <= 320
 
-    def is_approaching_temp_and_ec_threshold(self):
-        return (self.is_approaching_high_ec_threshold() or self.is_approaching_low_ec_threshold()) and
-            (self.is_approaching_high_temp_threshold() or self.is_approaching_low_temp_threshold())
+    # def is_approaching_temp_and_ec_threshold(self):
+    #     return (self.is_approaching_high_ec_threshold() or self.is_approaching_low_ec_threshold()) and
+    #         (self.is_approaching_high_temp_threshold() or self.is_approaching_low_temp_threshold())
 
     def send_alert_email_high_temp(self):
         email = EmailMessage('Bona Petite Alert: High Temperature!', 'Hi, you need to check your plants as the monitoring system has detected that the temperature is approaching the height of the ideal temperature range', to=['farmerphil2016@gmail.com']) #put in user id future
         email.send()
 
-     def send_alert_email_low_temp(self):
+    def send_alert_email_low_temp(self):
         email = EmailMessage('Bona Petite Alert: Low Temperature!', 'Hi, you need to check your plants as the monitoring system has detected that the temperature is approaching the low of the ideal temperature range', to=['farmerphil2016@gmail.com']) #put in user id future
         email.send()
 
@@ -59,7 +59,7 @@ class Collector(models.Model):
         email = EmailMessage('Bona Petite Alert: High EC!', 'Hi, you need to check your plants as the monitoring system has detected that the EC level is approaching the high of the ideal EC range', to=['farmerphil2016@gmail.com']) #put in user id future
         email.send()
 
-     def send_alert_email_low_ec(self):
+    def send_alert_email_low_ec(self):
         email = EmailMessage('Bona Petite Alert: Low EC!', 'Hi, you need to check your plants as the monitoring system has detected that the EC level is approaching the high of the ideal EC range', to=['farmerphil2016@gmail.com']) #put in user id future
         email.send()
 
