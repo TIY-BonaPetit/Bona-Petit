@@ -40,7 +40,7 @@ class Collector(models.Model):
     #     else:
     #         return False
 
-    # def  
+    # def
 
 
     # # function for calling the email in the Collector models. look at pic on phone from bryce. Collector.save() and .super() stuff

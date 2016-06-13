@@ -48,7 +48,7 @@ class CollectionsViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows mister collections to be viewed or edited.
     """
-    queryset = Collector.objects.all().order_by('-ec_level')
+    queryset = Collector.objects.all().order_by('-time_collected')
     serializer_class = CollectorSerializer
 
 
