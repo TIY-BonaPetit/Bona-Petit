@@ -2,7 +2,7 @@ import csv
 
 from rest_framework import viewsets
 
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render, render_to_response  # , get_or_create
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext
 
@@ -26,9 +26,14 @@ def index(request):
 
 
 def collection(request):
-    filtered = Collector.objects.filter(user=request.user)
-    latest = filtered.latest()
-    return render(request, 'plantinfo.html', {'latest': latest})
+    try:
+        # filtered = Collector.objects.filter(user=request.user)
+        latest = Collector.objects.filter(user=request.user).latest()
+        context = {'latest': latest}
+    except:
+        default = Collector.objects.create()
+        context = {'latest': default}
+    return render(request, 'plantinfo.html', context)
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -43,7 +48,7 @@ class CollectionsViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows mister collections to be viewed or edited.
     """
-    queryset = Collector.objects.all().order_by('-pH_level')
+    queryset = Collector.objects.all().order_by('-ec_level')
     serializer_class = CollectorSerializer
 
 
@@ -123,5 +128,5 @@ def data_csv(request):
     filtered = Collector.objects.filter(user=request.user)
     data = filtered.order_by('-time_collected')
     for collector in data:
-        writer.writerow([collector.pH_level, collector.temperature])
+        writer.writerow([collector.ec_level, collector.temperature])
     return response
