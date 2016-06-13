@@ -49,17 +49,17 @@ d3.json("/api/mister/")
       .domain([0, 1500]);
 
     //set x-axis scale
-    var xAxis = d3.svg.axis()
+    xAxis = d3.svg.axis()
       .scale(x)
       .tickFormat(date_format);
 
     //set y-axis scale for temp graph
-    var yAxis = d3.svg.axis()
+    yAxis = d3.svg.axis()
       .scale(y)
       .orient("left");
 
     //set y-axis scale for ec graph
-    var ecYAxis = d3.svg.axis()
+    ecYAxis = d3.svg.axis()
       .scale(ecY)
       .orient("left");
 
