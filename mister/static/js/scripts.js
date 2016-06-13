@@ -111,7 +111,7 @@ d3.json("/api/mister/")
       .attr("width", width-70)
       .attr("height", 80)
       .attr("fill", "pink")
-      .attr("opacity", 0.5);
+      .attr("opacity", 0.7);
 
     //min temperature range line
     svg.append("svg:line")
@@ -120,7 +120,7 @@ d3.json("/api/mister/")
       .attr("y1", 300)
       .attr("y2", 300)
       .style("stroke", "rgb(189, 189, 189)")
-      .attr("opacity", 0.1);
+      .attr("opacity", 0.6);
 
     //min temp range area
     var minRectangle = svg.append("rect")
@@ -129,7 +129,7 @@ d3.json("/api/mister/")
       .attr("width", width-70)
       .attr("height", 80)
       .attr("fill", "lightblue")
-      .attr("opacity", 0.5);
+      .attr("opacity", 0.7);
 
     // create variable for temp data line
     var line = d3.svg.line()
@@ -237,7 +237,7 @@ d3.json("/api/mister/")
       .attr("width", width-70)
       .attr("height", 63)
       .attr("fill", "lightgray")
-      .attr("opacity", 0.5);
+      .attr("opacity", 0.7);
 
     //min ec range line
     ecg.append("svg:line")
@@ -246,7 +246,7 @@ d3.json("/api/mister/")
       .attr("y1", 338)
       .attr("y2", 338)
       .style("stroke", "rgb(189, 189, 189)")
-      .attr("opacity", 0.3);
+      .attr("opacity", 0.6);
 
     //min temp range area
     var minRectangle = ecg.append("rect")
@@ -255,7 +255,7 @@ d3.json("/api/mister/")
       .attr("width", width-70)
       .attr("height", 43)
       .attr("fill", "lightgray")
-      .attr("opacity", 0.5);
+      .attr("opacity", 0.7);
 
     // create variable for ec data line
     var ecLine = d3.svg.line()
