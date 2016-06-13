@@ -1,12 +1,15 @@
 
 // //grab the json data
 d3.json("/api/mister/")
+
 .get(function(error, json) {
-  //error callback
-  if (error) return console.warn(error);
-  //set svg data as json payload
-  var data = json.results;
-  console.log(data);
+
+    //error callback
+    if (error) return console.warn(error);
+
+    //set svg data as json payload
+    var data = json.results;
+    console.log(data);
 
   //----------------------------shared graph variables---------------------//
 
@@ -16,7 +19,7 @@ d3.json("/api/mister/")
     var toolTipDate = d3.time.format("%a %b, %I:%M:%S");
     var tempFn = function(d){ return d.temperature };
     var dateFn = function(d){ return format.parse(d.time_collected)};
-    var ecFn = function(d){ return d.pH_level };
+    var ecFn = function(d){ return d.ec_level };
 
     //set variables for graph size and margins
     var width = 800;
@@ -46,21 +49,22 @@ d3.json("/api/mister/")
       .domain([0, 1500]);
 
     //set x-axis scale
-    xAxis = d3.svg.axis()
+    var xAxis = d3.svg.axis()
       .scale(x)
       .tickFormat(date_format);
 
     //set y-axis scale for temp graph
-    yAxis = d3.svg.axis()
+    var yAxis = d3.svg.axis()
       .scale(y)
       .orient("left");
 
     //set y-axis scale for ec graph
-    ecYAxis = d3.svg.axis()
+    var ecYAxis = d3.svg.axis()
       .scale(ecY)
       .orient("left");
 
   //---------------------------temperature graph---------------------------//
+
     //create an svg graph!
     var svg = d3.select('#temp-graph').append("svg:svg")
       .attr("width", width + margins.left + margins.right)
@@ -134,33 +138,37 @@ d3.json("/api/mister/")
        .interpolate("linear");
 
     var refreshTempGraph = setInterval( function(){
-      d3.json("/api/mister/")
-      .get(function(error, json) {
-        //error callback
-        if (error) return console.warn(error);
-        //set svg data as json payload
-        var data = json.results;
-      //append temp data line
-      svg.append("svg:path")
-        .attr("d", line(data))
-        .style("stroke", "limegreen");
 
-      //append temp data as circles
-      svg.selectAll("circle").data(data).enter()
-        .append("svg:circle")
-        .attr("r", 4)
-        .attr("cx", function(d){ return x(dateFn(d))})
-        .attr("cy", function(d){ return y(tempFn(d))})
-        .style("stroke", "limegreen")
-        .style("fill", "white")
-        .on("mouseover", function(d){//add tooltips to display temp/time data on hover over each data point
-          tempTooltip.transition()
-          .duration(200)
-          .style("opacity", 0.7)
-          .style("display", "block")
-          tempTooltip.html("<div id='temp-tooltip'><span><b>" + d.temperature + "</b>°C</span><br><span>Taken <b>" + d.time_collected + "</b></span></div>")
-          .style("left", (d3.event.pageX) + "px")
-          .style("top", (d3.event.pageY - 78) + "px")
+        d3.json("/api/mister/")
+        .get(function(error, json) {
+
+            //error callback
+            if (error) return console.warn(error);
+
+            //set svg data as json payload
+            var data = json.results;
+
+            //append temp data line
+            svg.append("svg:path")
+              .attr("d", line(data))
+              .style("stroke", "limegreen");
+
+            //append temp data as circles
+            svg.selectAll("circle").data(data).enter()
+              .append("svg:circle")
+              .attr("r", 4)
+              .attr("cx", function(d){ return x(dateFn(d))})
+              .attr("cy", function(d){ return y(tempFn(d))})
+              .style("stroke", "limegreen")
+              .style("fill", "white")
+              .on("mouseover", function(d){//add tooltips to display temp/time data on hover over each data point
+            tempTooltip.transition()
+              .duration(200)
+              .style("opacity", 0.7)
+              .style("display", "block")
+            tempTooltip.html("<div id='temp-tooltip'><span><b>" + d.temperature + "</b>°C</span><br><span>Taken <b>" + d.time_collected + "</b></span></div>")
+              .style("left", (d3.event.pageX) + "px")
+              .style("top", (d3.event.pageY - 78) + "px")
         })
         .on("mouseout", function(d){
           tempTooltip.transition()
@@ -168,7 +176,7 @@ d3.json("/api/mister/")
           .style("opacity", 0)
           .style("display", "none")
         });
-      })//end get
+    })//end get
     }, 1000);//end timer
 
 
@@ -281,7 +289,7 @@ d3.json("/api/mister/")
         .duration(200)
         .style("opacity", 0.7)
         .style("display", "block")
-        tempTooltip.html("<div id='temp-tooltip'><span><b>" + d.pH_level + " </b>µS/cm </span><br><span>Taken <b>" + d.time_collected + "</b></span></div>")
+        tempTooltip.html("<div id='temp-tooltip'><span><b>" + d.ec_level + " </b>µS/cm </span><br><span>Taken <b>" + d.time_collected + "</b></span></div>")
         .style("left", (d3.event.pageX) + "px")
         .style("top", (d3.event.pageY - 78) + "px")
       })
@@ -292,8 +300,9 @@ d3.json("/api/mister/")
         .style("display", "none")
       });
 
-      })//end get
+  })//end get
     }, 1000)
 
     // refreshECGraph();
+
 });
