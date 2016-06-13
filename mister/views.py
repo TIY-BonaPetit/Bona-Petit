@@ -31,8 +31,8 @@ def collection(request):
         latest = Collector.objects.filter(user=request.user).latest()
         context = {'latest': latest}
     except:
-        default = Collector.objects.create()
-        context = {'latest': default}
+        latest = Collector.objects.create()
+        context = {'latest': latest}
     return render(request, 'plantinfo.html', context)
 
 
