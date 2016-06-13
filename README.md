@@ -34,14 +34,17 @@ Air temperature and nutrient levels are all maintained via an Arduino board. The
 
 ## API Reference
 
-*Depending on the size of the project, if it is small and simple enough the reference docs can be added to the README. For medium size to larger projects it is important to at least provide a link to where the API reference docs live.*
-
 The API reference for Bona Petite's web app is located here:
 
-http://bonapetite.herokuapp.com/api/mister/
+http://bonapetite.herokuapp.com/api/
 
-The API holds information on users, and sensor data. The users
+The API holds information on users, and sensor data. Both API's are built on the Django REST framework. The users database includes each user's URL, registration name, and email address. The sensors database nicknamed "mister" includes a user identification number, a reading for electrical conductivity, a reading for temperature, and the time the information was collected.
 
+The API reference for the Bona Petite computer system is located here:
+
+https://github.com/TIY-BonaPetite/arduino_scripts
+
+This includes all materials associated with hardware development. In this repository you will find; a bill of materials for the project, a schematic for the Arduino circuit, a visual pattern to follow for circuit development, all of the Arduino C scripts used in development, and the Python bridge program.
 
 
 
