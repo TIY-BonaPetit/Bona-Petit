@@ -3,8 +3,6 @@ from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
 
 
-
-
 # two separates models: temp and ec_levl?
 class Collector(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
@@ -19,46 +17,39 @@ class Collector(models.Model):
     class Meta:
         get_latest_by = 'time_collected'
 
-    def save(self):
-        super().save()
+    def save(self, force_insert=False, force_update=False):
+        super().save(force_insert=force_insert, force_update=force_update)
 
-        if self.is_approaching_temp_threshold():
-            return self.send_alert_email_temp()
+        if self.is_approaching_temp_and_ec_threshold():
+            self.send_alert_email_temp_and_ec()
+        elif self.is_approaching_temp_threshold():
+            self.send_alert_email_temp()
+        elif self.is_approaching_ec_threshold():
+            self.send_alert_email_ec()
 
     def is_approaching_temp_threshold(self):
         return self.temperature >= 27 or self.temperature <= 23
 
+    def is_approaching_ec_threshold(self):
+        return self.ec_level >= 1080 or self.ec_level <= 320
+
+    def is_approaching_temp_and_ec_threshold(self):
+        return self.is_approaching_ec_threshold() and self.is_approaching_temp_threshold()
+
     def send_alert_email_temp(self):
-        email = EmailMessage('Check temp', 'temp', to=['farmerphil2016@gmail.com'])
+        email = EmailMessage('Check temp', 'temp', to=['farmerphil2016@gmail.com']) #put in user id future
         email.send()
 
-    # def ec_is_approaching_threshold(self):
-    #     if self.ec_level >=1080 or self.ec_level <= 320:
-    #         reuturn self.send_alert_email_ec ()
-    #     else:
-    #         return False
+    def send_alert_email_ec(self):
+        email = EmailMessage('Check ec', 'EC', to=['farmerphil2016@gmail.com']) #put in user id future
+        email.send()
 
-    # def ec_temp_both_approaching_threshold(self):
-    #     if self.ec_level >= 1080 or self.ec_level <=320 and self.temperature >=27 or self.temperature <=23:
-    #         return self.send_alert_email_ec_temp ()
-    #     else:
-    #         return False
-
-    # def
-
-
-    # # function for calling the email in the Collector models. look at pic on phone from bryce. Collector.save() and .super() stuff
-    # def temp_is_approaching_threshold(self):
-    # if temperature >= 27 or temperature =< 23:
-        # call email function (temperature alert)
-    # def EC_is_approaching_threshold(self):
-    # if EC >= 1080 or EC =< 320:
-        # call email function (EC alert)
-    # def both_approaching_threshold(self):
-    # if temperature >= 27 or temperature <= 23 AND ec_level >= 1080 or ec_level <= 320:
-        # call email function (dire alert! need to check your system ASAP)
+    def send_alert_email_temp_and_ec(self):
+        email = EmailMessage('Check temp and ec', 'temp and ec', to=['farmerphil2016@gmail.com']) #put in user id future
+        email.send()
 
     # if email_sent, need to count minutes, if temp or ec still approaching threshold, resend email every 10 mins.
+
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
