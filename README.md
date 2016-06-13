@@ -20,7 +20,7 @@ built-in solar panel
 ## Motivation
 
 THE SOLUTION
-Bona Petite is a self-contained, plug and play component that is maintained with a series of Arduino controllers. Air temperature, pH level and nutrient levels are all maintained via the Arduino's. The Arduino's are networked to a Raspberry Pi using I2C to allow all system parameters to be monitored and updated in real time. The Raspberry Pi is further used to maintain a historical log of all the systems running data and make it available via an API. A companion web app interacts with the Raspberry Pi allowing monitoring your entire system from anywhere in the world.
+Bona Petite is a self-contained, plug and play component that is maintained with a series of Arduino controllers. Air temperature and nutrient levels are all maintained via the Arduino's. The Arduino's are networked to a Raspberry Pi using I2C to allow all system parameters to be monitored and updated in real time. The Raspberry Pi is further used to maintain a historical log of all the systems running data and make it available via an API. A companion web app interacts with the Raspberry Pi allowing monitoring your entire system from anywhere in the world.
 
 
 ## Installation
