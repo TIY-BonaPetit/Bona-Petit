@@ -1,20 +1,15 @@
 # Bona-Petite
 
-## Synopsis
+## BENEFITS OF BONA PETITE
 
-####BENEFITS OF BONA PETITE:
 
-Maintained by an Arduino micro-controller and a RaspberryPi motherboard
-Solution concentration and temperature monitoring
-Smart and connected Bona Petite web app
-Alert notifications via email when ideal conditions are not met
+Bona Petite is a computer system maintained by an Arduino micro-controller, and a RaspberryPi motherboard. It has built in sensors to collect temperature and electrical conductivity data of a solution. Bona Petite is smart and connected to the Bona Petite web app. Alert notifications via email when ideal conditions are not met
 
 ######FUTURE DEVELOPMENTS
 
-Bona Petite is still in its infancy moving forward, the capability of SMS updates will provide even quicker notifications of key indicators.
+SMS update feature
 
-
-The system will draw its power from a built-in solar panel.
+built-in solar panel
 
 
 ## Code Example
