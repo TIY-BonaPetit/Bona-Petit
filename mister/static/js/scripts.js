@@ -158,10 +158,6 @@ d3.json("/api/mister/")
         console.log(dataOne[19].time_collected);
 
 
-
-
-
-
        var path = svg.selectAll("templine").data(dataOne);
 
        svg.selectAll("path").remove()
@@ -171,7 +167,7 @@ d3.json("/api/mister/")
        .attr('class', 'templine')
        .style("stroke", "limegreen");
 
-       ;
+
 
       var circles = svg.selectAll("circle").data(dataOne)
 
@@ -202,8 +198,6 @@ d3.json("/api/mister/")
           .style("opacity", 0)
           .style("display", "none")
         });
-
-
 
     })//end get
     }, 1000);//end timer
@@ -311,8 +305,8 @@ d3.json("/api/mister/")
        //change x domain
        x.domain(d3.extent(dataTwo, dateFn));
 
-       ecg.selectAll('.x.axis')
-       .call(xAxis)
+      //  ecg.selectAll('.x.axis')
+      //  .call(xAxis)
 
        var path1 = ecg.selectAll("path").data(dataTwo);
 
@@ -322,11 +316,8 @@ d3.json("/api/mister/")
        .attr("d", ecLine(dataTwo))
        .style("stroke", "limegreen");
 
-       ecg.select('.x.axis').transition().call(xAxis)
 
       var circles = ecg.selectAll("circle").data(dataTwo)
-
-
 
       circles.transition()
       .attr("cx", function(d) { return x(dateFn(d)) })
@@ -355,15 +346,7 @@ d3.json("/api/mister/")
          .style("opacity", 0)
          .style("display", "none")
        });
-    //    ecg.selectAll("hate").remove();
-    //    ecg.append("svg:g")
-    //      .attr("transform", "translate(0," + (height-margins.bottom/2.75) + ")")
-    //      .attr("class", "hate")
-    //      .call(xAxis);
-        // ecg.append("svg:g")
-        //     .attr("class", "hate")
-        //   .attr("transform", "translate(" + (margins.left) + ")")
-        //   .call(ecYAxis);
+
    })//end get
    }, 1000);//end timeout
 
