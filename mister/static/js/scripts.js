@@ -137,6 +137,11 @@ d3.json("/api/mister/")
        .y(function(d){ return y(tempFn(d))})
        .interpolate("linear");
 
+   //append temp data line
+   svg.append("svg:path")
+     .attr("d", line(data))
+     .style("stroke", "limegreen");
+
 
     var refreshTempGraph = setInterval( function(){
       d3.json("/api/mister/")
@@ -160,6 +165,9 @@ d3.json("/api/mister/")
       tsvg.select(".line")   // change the line
             .duration(750)
             .attr("d", line(data))
+      tsvg.select(".x.axis") // change the x axis
+              .duration(750)
+              .call(xAxis);
 
       var circles = svg.selectAll("circle").data(data)
 
@@ -279,6 +287,11 @@ d3.json("/api/mister/")
      .y(function(d){ return ecY(ecFn(d))})
      .interpolate("linear");
 
+     //append temp data line
+     ecg.append("svg:path")
+      .attr("d", ecLine(data))
+      .style("stroke", "limegreen");
+
     var refreshECGraph = setInterval( function(){
 
       d3.json("/api/mister/")
@@ -297,8 +310,13 @@ d3.json("/api/mister/")
       eecg.select(".line")   // change the line
             .duration(750)
             .attr("d", line(data))
+      eecg.select(".x.axis") // change the x axis
+            .duration(750)
+            .call(xAxis);
 
       var circles = ecg.selectAll("circle").data(data)
+
+
 
       circles.transition()
       .attr("cx", function(d) { return x(dateFn(d)) })
