@@ -152,7 +152,7 @@ d3.json("/api/mister/")
 
 
       //change x domain
-      x.domain(d3.extent(data, dateFn));
+      // x.domain(d3.extent(data, dateFn));
 
       //append temp data line
       svg.append("svg:path")
@@ -279,7 +279,7 @@ d3.json("/api/mister/")
        var data = json.results;
 
        //change x domain
-       x.domain(d3.extent(data, dateFn));
+      //  x.domain(d3.extent(data, dateFn));
 
       //append ec data line
       ecg.append("svg:path")
