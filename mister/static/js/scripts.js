@@ -153,7 +153,7 @@
 
       var circles = svg.selectAll("circle").data(data)
 
-      var line1 = svg.selectAll("path").transition()
+      var line = svg.selectAll("path").transition()
       .attr("d", line(data));
 
       circles.transition()
