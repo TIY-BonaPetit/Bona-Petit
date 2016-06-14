@@ -151,13 +151,13 @@ d3.json("/api/mister/")
     //      .call(xAxis);
 
 
-       var svg = d3.select("#temp-graph").transition()
+       var tsvg = d3.select("#temp-graph").transition()
 
       //change x domain
       x.domain(d3.extent(data, dateFn));
 
 
-      svg.select(".line")   // change the line
+      tsvg.select(".line")   // change the line
             .duration(750)
             .attr("d", line(data))
 
@@ -291,10 +291,10 @@ d3.json("/api/mister/")
        //change x domain
        x.domain(d3.extent(data, dateFn));
 
-       var ecg = d3.select("#ec-graph").transition();
+       var eecg = d3.select("#ec-graph").transition();
 
       //append ec data line
-      ecg.select(".line")   // change the line
+      eecg.select(".line")   // change the line
             .duration(750)
             .attr("d", line(data))
 
