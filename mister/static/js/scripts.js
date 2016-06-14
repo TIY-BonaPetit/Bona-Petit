@@ -152,7 +152,7 @@ d3.json("/api/mister/")
 
 
       //change x domain
-      // x.domain(d3.extent(data, dateFn));
+      x.domain(d3.extent(data, dateFn));
 
       //append temp data line
       svg.append("svg:path")
@@ -182,7 +182,7 @@ d3.json("/api/mister/")
           .style("opacity", 0)
           .style("display", "none")
         });
-      }//end get
+    })//end get
     }, 1000);//end timer
 
 
@@ -279,7 +279,7 @@ d3.json("/api/mister/")
        var data = json.results;
 
        //change x domain
-      //  x.domain(d3.extent(data, dateFn));
+       x.domain(d3.extent(data, dateFn));
 
       //append ec data line
       ecg.append("svg:path")
@@ -310,7 +310,7 @@ d3.json("/api/mister/")
          .style("display", "none")
        });
 
-     }//end get
+   })//end get
    }, 1000);//end timeout
 
     // refreshECGraph();
