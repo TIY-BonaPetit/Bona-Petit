@@ -150,6 +150,10 @@ d3.json("/api/mister/")
     //      .attr("transform", "translate(0," + (height-margins.bottom/2.75) + ")")
     //      .call(xAxis);
 
+
+      //change x domain
+      x.domain(d3.extent(data, dateFn));
+
       //append temp data line
       svg.append("svg:path")
         .attr("d", line(data))
@@ -273,11 +277,9 @@ d3.json("/api/mister/")
        if (error) return console.warn(error);
        //set svg data as json payload
        var data = json.results;
-       //append new x axis
-       //append x-axis
-       ecg.append("svg:g")
-         .attr("transform", "translate(0," + (height-margins.bottom/2.75) + ")")
-         .call(xAxis);
+
+       //change x domain
+       x.domain(d3.extent(data, dateFn));
 
       //append ec data line
       ecg.append("svg:path")
