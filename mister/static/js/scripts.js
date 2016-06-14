@@ -156,24 +156,18 @@ d3.json("/api/mister/")
     //      .call(xAxis);
 
 
-       var tsvg = d3.select("#temp-graph").transition()
+       x.domain(d3.extent(data, dateFn))
 
-      //change x domain
-      x.domain(d3.extent(data, dateFn));
-
-
-      tsvg.select(".path")   // change the line
-            .duration(750)
-            .attr("d", line(data))
-      tsvg.select(".x.axis") // change the x axis
-              .duration(750)
-              .call(xAxis);
+       svg.select(".x.axis").transition().duration(750).call(xAxis)
 
       var circles = svg.selectAll("circle").data(data)
 
+      var line1 = svg.selectAll("path").transition()
+      .attr("d", line(data));
+
       circles.transition()
       .attr("cx", function(d) { return x(dateFn(d)) })
-      .attr("cy", function(d){ return y(tempFn(d))})
+      .attr("cy", function(d){ return y(tempFn(d))});
 
 
 
