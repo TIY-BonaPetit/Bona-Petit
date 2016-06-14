@@ -9,7 +9,7 @@ d3.json("/api/mister/")
 
     //set svg data as json payload
     var data = json.results;
-    // console.log(data);
+    console.log(data);
 
   //----------------------------shared graph variables---------------------//
 
