@@ -6,8 +6,8 @@ from django.core.mail import EmailMessage
 # two separates models: temp and ec_levl?
 class Collector(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
-    ec_level = models.FloatField(default=0)
-    temperature = models.FloatField(default=0)
+    ec_level = models.FloatField(default=200)
+    temperature = models.FloatField(default=20)
     time_collected = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
