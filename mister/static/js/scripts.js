@@ -9,11 +9,7 @@ d3.json("/api/mister/")
 
     //set svg data as json payload
     var data = json.results;
-    console.log(data);
-    console.log(data[0]);
-    console.log(data[0].time_collected);
-    console.log(data[19].time_collected);
-    // console.log(data.time_collected);
+    // console.log(data);
 
   //----------------------------shared graph variables---------------------//
 
@@ -141,42 +137,28 @@ d3.json("/api/mister/")
        .y(function(d){ return y(tempFn(d))})
        .interpolate("linear");
 
-   //append temp data line
-   // svg.append("svg:path")
-   //   .attr("d", line(data))
-   //   .style("stroke", "limegreen");
-
-
     var refreshTempGraph = setInterval( function(){
       d3.json("/api/mister/")
      .get(function(error, json) {
        //error callback
        if (error) return console.warn(error);
+
        //set svg data as json payload
-       var dataOne = json.results;
-        console.log(dataOne[0].time_collected);
-        console.log(dataOne[19].time_collected);
+       var dataTemp = json.results;
 
-
-
-
-
-
-       var path = svg.selectAll("templine").data(dataOne);
+       var path = svg.selectAll("templine").data(dataTemp);
 
        svg.selectAll("path").remove()
 
        path.enter().append("path")
-       .attr("d", line(dataOne))
+       .attr("d", line(dataTemp))
        .attr('class', 'templine')
        .style("stroke", "limegreen");
 
-       ;
-
-      var circles = svg.selectAll("circle").data(dataOne)
+      var circles = svg.selectAll("circle").data(dataTemp);
 
       circles.transition()
-      .attr("cx", function(d) { return x(dateFn(d)) })
+      .attr("cx", function(d) { return x(dateFn(d))})
       .attr("cy", function(d){ return y(tempFn(d))});
 
       //append temp data as circles
@@ -202,12 +184,8 @@ d3.json("/api/mister/")
           .style("opacity", 0)
           .style("display", "none")
         });
-
-
-
     })//end get
     }, 1000);//end timer
-
 
     //create empty/invisible div to for as to have DOM attachment for tooltip
     var tempTooltip = d3.select("body")
@@ -303,30 +281,27 @@ d3.json("/api/mister/")
      .get(function(error, json) {
        //error callback
        if (error) return console.warn(error);
+
        //set svg data as json payload
-       var dataTwo = json.results;
-       console.log(dataTwo[0].time_collected);
-       console.log(dataTwo[19].time_collected);
+       var dataEC = json.results;
 
        //change x domain
-       x.domain(d3.extent(dataTwo, dateFn));
+       x.domain(d3.extent(dataEC, dateFn));
 
        ecg.selectAll('.x.axis')
        .call(xAxis)
 
-       var path1 = ecg.selectAll("path").data(dataTwo);
+       var path1 = ecg.selectAll("path").data(dataEC);
 
        path1.remove()
 
        path1.enter().append("path")
-       .attr("d", ecLine(dataTwo))
+       .attr("d", ecLine(dataEC))
        .style("stroke", "limegreen");
 
        ecg.select('.x.axis').transition().call(xAxis)
 
-      var circles = ecg.selectAll("circle").data(dataTwo)
-
-
+      var circles = ecg.selectAll("circle").data(dataEC)
 
       circles.transition()
       .attr("cx", function(d) { return x(dateFn(d)) })
@@ -355,18 +330,7 @@ d3.json("/api/mister/")
          .style("opacity", 0)
          .style("display", "none")
        });
-    //    ecg.selectAll("hate").remove();
-    //    ecg.append("svg:g")
-    //      .attr("transform", "translate(0," + (height-margins.bottom/2.75) + ")")
-    //      .attr("class", "hate")
-    //      .call(xAxis);
-        // ecg.append("svg:g")
-        //     .attr("class", "hate")
-        //   .attr("transform", "translate(" + (margins.left) + ")")
-        //   .call(ecYAxis);
    })//end get
    }, 1000);//end timeout
-
-    // refreshECGraph();
-
+   // refreshECGraph();
 });
