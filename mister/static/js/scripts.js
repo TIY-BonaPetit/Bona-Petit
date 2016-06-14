@@ -133,6 +133,11 @@
        .y(function(d){ return y(tempFn(d))})
        .interpolate("linear");
 
+   //append temp data line
+   svg.append("svg:path")
+     .attr("d", line(data))
+     .style("stroke", "limegreen");
+
 
     var refreshTempGraph = setInterval( function(){
       d3.json("/api/mister/")
@@ -142,15 +147,18 @@
        //set svg data as json payload
        var data = json.results;
 
-       var svg = d3.select("#temp-graph").transition()
+       var tsvg = d3.select("#temp-graph").transition()
 
       //change x domain
       x.domain(d3.extent(data, dateFn));
 
 
-      svg.select(".line")   // change the line
+      tsvg.select(".line")   // change the line
             .duration(750)
             .attr("d", line(data))
+      tsvg.select(".x.axis") // change the x axis
+              .duration(750)
+              .call(xAxis);
 
       var circles = svg.selectAll("circle").data(data)
 
@@ -270,6 +278,11 @@
      .y(function(d){ return ecY(ecFn(d))})
      .interpolate("linear");
 
+     //append temp data line
+     ecg.append("svg:path")
+      .attr("d", ecLine(data))
+      .style("stroke", "limegreen");
+
     var refreshECGraph = setInterval( function(){
 
       d3.json("/api/mister/")
@@ -282,14 +295,19 @@
        //change x domain
        x.domain(d3.extent(data, dateFn));
 
-       var ecg = d3.select("#ec-graph").transition();
+       var eecg = d3.select("#ec-graph").transition();
 
       //append ec data line
-      ecg.select(".line")   // change the line
+      eecg.select(".line")   // change the line
             .duration(750)
             .attr("d", line(data))
+      eecg.select(".x.axis") // change the x axis
+            .duration(750)
+            .call(xAxis);
 
       var circles = ecg.selectAll("circle").data(data)
+
+
 
       circles.transition()
       .attr("cx", function(d) { return x(dateFn(d)) })
