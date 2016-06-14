@@ -84,7 +84,7 @@ d3.json("/api/mister/")
     svg.append("text")
       .attr("text-anchor", "middle")
       .attr("transform", "translate("+(width/2)+","+(height+margins.bottom/3)+")")
-      .text("Time (Hours/Minutes/Seconds)");
+      .text("Time (Hr:Min:Sec)");
 
     //append y axis label
     svg.append("text")
