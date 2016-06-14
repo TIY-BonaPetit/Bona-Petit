@@ -147,24 +147,18 @@
        //set svg data as json payload
        var data = json.results;
 
-       var tsvg = d3.select("#temp-graph").transition()
+       x.domain(d3.extent(data, dateFn))
 
-      //change x domain
-      x.domain(d3.extent(data, dateFn));
-
-
-      tsvg.select(".line")   // change the line
-            .duration(750)
-            .attr("d", line(data))
-      tsvg.select(".x.axis") // change the x axis
-              .duration(750)
-              .call(xAxis);
+       svg.select(".x.axis").transition().duration(750).call(xAxis)
 
       var circles = svg.selectAll("circle").data(data)
 
+      var line1 = svg.selectAll("path").transition()
+      .attr("d", line(data));
+
       circles.transition()
       .attr("cx", function(d) { return x(dateFn(d)) })
-      .attr("cy", function(d){ return y(tempFn(d))})
+      .attr("cy", function(d){ return y(tempFn(d))});
 
 
 
@@ -298,7 +292,7 @@
        var eecg = d3.select("#ec-graph").transition();
 
       //append ec data line
-      eecg.select(".line")   // change the line
+      eecg.select(".path")   // change the line
             .duration(750)
             .attr("d", line(data))
       eecg.select(".x.axis") // change the x axis
