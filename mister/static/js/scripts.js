@@ -288,8 +288,8 @@ d3.json("/api/mister/")
        //change x domain
        x.domain(d3.extent(dataEC, dateFn));
 
-       ecg.selectAll('.x.axis')
-       .call(xAxis)
+      //  ecg.selectAll('.x.axis')
+      //  .call(xAxis)
 
        var path1 = ecg.selectAll("path").data(dataEC);
 
@@ -299,7 +299,6 @@ d3.json("/api/mister/")
        .attr("d", ecLine(dataEC))
        .style("stroke", "limegreen");
 
-       ecg.select('.x.axis').transition().call(xAxis)
 
       var circles = ecg.selectAll("circle").data(dataEC)
 

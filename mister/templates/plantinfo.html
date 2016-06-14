@@ -17,11 +17,11 @@
 	{% if user.is_authenticated %}
 	<h2> Bona Petite, {{user.username}}!</h2>
 	<!-- change this to allow whatever crop_Type is selected to be inserted -->
-		<h3>Latest Reading for New Gold Lantana<h3>
+		<h3>Latest Reading for 'New Gold' Lantana<h3>
 		<p>Time Collected: {{latest.time_collected}}</p>
 
 		<p>Temperature: {{latest.temperature}}°C</p>
-		<p>EC Level: {{latest.ec_level}}S</p>
+		<p>EC Level: {{latest.ec_level}}microsiemens</p>
 		{% csrf_token %}
 		<div id="temp-graph"></div>
 		{% csrf_token %}
