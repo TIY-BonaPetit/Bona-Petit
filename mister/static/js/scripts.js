@@ -162,7 +162,7 @@ d3.json("/api/mister/")
       x.domain(d3.extent(data, dateFn));
 
 
-      tsvg.select(".line")   // change the line
+      tsvg.select(".path")   // change the line
             .duration(750)
             .attr("d", line(data))
       tsvg.select(".x.axis") // change the x axis
@@ -307,7 +307,7 @@ d3.json("/api/mister/")
        var eecg = d3.select("#ec-graph").transition();
 
       //append ec data line
-      eecg.select(".line")   // change the line
+      eecg.select(".path")   // change the line
             .duration(750)
             .attr("d", line(data))
       eecg.select(".x.axis") // change the x axis
