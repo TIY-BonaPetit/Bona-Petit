@@ -151,16 +151,26 @@ d3.json("/api/mister/")
     //      .call(xAxis);
 
 
+       var svg = d3.select("#temp-graph").transition()
+
       //change x domain
       x.domain(d3.extent(data, dateFn));
 
-      //append temp data line
-      svg.append("svg:path")
-        .attr("d", line(data))
-        .style("stroke", "limegreen");
+
+      svg.select(".line")   // change the line
+            .duration(750)
+            .attr("d", line(data))
+
+      var circles = svg.selectAll("circle").data(data)
+
+      circles.transition()
+      .attr("cx", function(d) { return x(dateFn(d)) })
+      .attr("cy", function(d){ return y(tempFn(d))})
+
+
 
       //append temp data as circles
-      svg.selectAll("circle").data(data).enter()
+      circles.enter()
         .append("svg:circle")
         .attr("r", 4)
         .attr("cx", function(d){ return x(dateFn(d))})
@@ -281,13 +291,21 @@ d3.json("/api/mister/")
        //change x domain
        x.domain(d3.extent(data, dateFn));
 
+       var ecg = d3.select("#ec-graph").transition();
+
       //append ec data line
-      ecg.append("svg:path")
-       .attr("d", ecLine(data))
-       .style("stroke", "limegreen");
+      ecg.select(".line")   // change the line
+            .duration(750)
+            .attr("d", line(data))
+
+      var circles = ecg.selectAll("circle").data(data)
+
+      circles.transition()
+      .attr("cx", function(d) { return x(dateFn(d)) })
+      .attr("cy", function(d){ return ecY(ecFn(d))})
 
      //append ec data as circles
-     ecg.selectAll("circle").data(data).enter()
+     circles.enter()
        .append("svg:circle")
        .attr("r", 4)
        .attr("cx", function(d){ return x(dateFn(d))})
