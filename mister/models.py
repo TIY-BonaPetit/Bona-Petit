@@ -22,7 +22,7 @@ class Collector(models.Model):
 
         # if self.is_approaching_temp_and_ec_threshold():
         #     self.send_alert_email_temp_and_ec()
-        elif self.is_approaching_high_temp_threshold():
+        if self.is_approaching_high_temp_threshold():
             self.send_alert_email_high_temp()
         elif self.is_approaching_low_temp_threshold():
             self.send_alert_email_low_temp()
