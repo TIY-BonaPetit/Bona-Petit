@@ -7,15 +7,12 @@
 }
 
 html {
-    /*height: 100% !important;*/
     min-height: 450px;
     min-width: 300px;
     overflow:scroll;
 }
 
 body{
-    /*position: fixed;*/
-    /*height: 100%;*/
     min-height: 1600px;
     min-width: 100%;
     font-family: 'Raleway';
@@ -53,11 +50,13 @@ ul {
  ****************************/
 
 header {
+    position: relative;
     float: left;
     width: 100%;
+    height: 80px;
     margin: 0 0 10px 0;
     padding: 5px 0 0 0;
-    border-bottom: 3px;
+    border-bottom: 5px;
     border-top: 0;
     border-left: 0;
     border-right: 0;
@@ -66,36 +65,50 @@ header {
     top: 0;
 }
 
-#logo {
-    float: left;
-    width:100%;
-}
-
-#logo-text {
-    float: left;
+#logo-link {
+    position: absolute;
+    left: 0px;
+    top: 5px;
     margin: 10px 5px 10px 15px;
     width:60%;
     width: 200px;
 }
 
+#logo-navs {
+    position: absolute;
+    min-width:150px;
+    height: 60px;
+    left: 30%;
+    top: 25%;
+    min-width:150px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+#logo-navs li {
+    display: inline-block;
+    padding: 5px 5px 0px 5px;
+}
+
 #logo-buttons {
-    float: right;
+    position: absolute;
+    right: 0px;
+    top: 25%;
     min-width:150px;
     margin-right: 10px;
 }
 
 #logo-buttons li {
     display: inline-block;
-    padding: 5px 5px;
+    padding: 5px 5px 0px 5px;
 }
 
 h1 {
-    max-width: 350px;
-    width: 190px;
+    width: 90%;
     font-family: 'Roboto', serif;
     font-weight: normal;
     font-size: 1.75em;
-    text-align: left;
+    text-align: center;
     line-height: 1em;
     letter-spacing: .05em;
     text-transform: uppercase;
@@ -112,25 +125,6 @@ h2 {
     line-height: 1em;
     letter-spacing: .03em;
     text-transform: uppercase;
-}
-
-a.button {
-    -webkit-appearance: initial;
-    border: 0px;
-    border-style: solid;
-    border-radius: 5px;
-    border-color: #233A14;
-    color: white;
-    padding: 5px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    width: 60px;
-}
-
-a.button:active {
-    background-color: #BF9;
 }
 
 
@@ -152,6 +146,7 @@ p {
     font-size: 0.8em;
     font-weight: normal;
     line-height: 1em;
+    text-transform: none;
 }
 
 
@@ -160,28 +155,20 @@ p {
 NAVIGATION
 ****************************/
 
-nav {
-    display: block;
-    height: 60px;
-    text-align: center;
-    margin: 75px 0 0;
-    padding: 10px 0;
-    height: 30px;
-}
-
-nav ul {
-    margin: 0 10px;
-    padding: 0;
-}
-
-nav li {
-    display: inline-block;
+a.button {
+    -webkit-appearance: initial;
+    border-top: 0px;
+    border-right: 0px;
+    border-bottom: 5px;
+    border-left: 0px;
+    border-style: solid;
     padding: 5px 5px;
-}
-
-nav a {
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
     font-size: 16px;
-    padding: 5px 10px;
+    width: 80px;
+    height: 40px;
 }
 
 
@@ -198,35 +185,31 @@ nav a {
  * COLORS                   *
  ****************************/
 
+/* white default background */
 html {
     background-color: #FFF;
 }
 
-/* dark green background | white text */
+/* white body background | black text */
 body {
     background-color: #FFF;
     color: #000;
 }
 
-/* dark green header background | white border */
+/* very dark green header background | medium lime green border */
 header {
-    background: #233A14;
-    border-color: #456;
+    background: #010;
+    color: #2A3;
 }
 
-/* dark green logo background */
-#logo {
-    background: #233A14;
-}
-
-/* medium green nav background */
+/* very dark green nav background */
 nav {
-    background: #259A48;
+    background: #010;
 }
 
-/* white logo */
+/* medium green logo */
 h1, h2 {
-    color: #FFF;
+    color: #2A3;
 }
 
 /* black body headers */
@@ -234,20 +217,22 @@ h3 {
     color: #000;
 }
 
-/* lime green nav links */
-nav a, nav a:visited{
-    color: #BF9;
+/* very dark green button background */
+nav a.button {
+    color: #2A3;
+    background-color: #010;
+    border-color: #010;
 }
 
 /* light green links | white border */
-a.button:hover, nav a.selected, nav a:hover {
+nav a.button:hover, #selected {
     color: #42DCA3;
 }
 
-/* dark green button background */
-a.button {
-    background-color: #233A14;
+nav a.button:active {
+    border-color: #42DCA3;
 }
+
 
 
 /*----------D3 CSS----------*/

@@ -1,16 +1,17 @@
 {% extends 'base.html' %}
 
 {% block title %}
-	Contact - {{ block.super }}
+	Contact {{ block.super }}
 {% endblock %}
 
 {% block headernavul %}
-	<li><a href="{% url 'index' %}">Home</a></li>
-	<li><a href="{% url 'about' %}">About</a></li>
-	<li><a href="{% url 'contact' %}" class='selected'>Contact</a></li>
-	{% if user.is_authenticated %}
-	<li><a href="{% url 'plantinfo' %}">Plant Info</a></li>
-	{% endif %}
+	<li><a href="{% url 'index' %}" class='button'>Home</a></li>
+	<li><a href="{% url 'about' %}" class='button'>About</a></li>
+	<li><a href="{% url 'contact' %}" class='button' id='selected'>Contact</a></li>
+{% endblock %}
+
+{% block headernavreg %}
+	{{ block.super }}
 {% endblock %}
 
 {% block bodycontent %}
@@ -19,4 +20,7 @@
 		<p> David Mohrmann: dtmohrmann@gmail.com</p>
 		<p> Scott Robertson: the.scott.rob@gmail.com</p>
 		<p> Byron Wall: byrondevonwall@gmail.com</p>
+{% endblock %}
+
+{% block javascipt %}
 {% endblock %}

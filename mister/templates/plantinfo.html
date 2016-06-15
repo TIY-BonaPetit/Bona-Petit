@@ -1,15 +1,20 @@
 {% extends 'base.html' %}
 
 {% block title %}
-	Plant Info - {{ block.super }}
+	Data for {{user}}
 {% endblock %}
 
 {% block headernavul %}
-	<li><a href="{% url 'index' %}">Home</a></li>
-	<li><a href="{% url 'about' %}">About</a></li>
-	<li><a href="{% url 'contact' %}">Contact</a></li>
+	{{block.super}}
+{% endblock %}
+
+{% block headernavreg %}
 	{% if user.is_authenticated %}
-	<li><a href="{% url 'plantinfo' %}" class='selected'>Plant Info</a></li>
+	<li><a href="{% url 'plantinfo' %}" class='button' id='selected'>Plant Info</a></li>
+	<li><a href="{% url 'logout' %}" class='button'>Logout</a></li>
+	{% else %}
+	<li><a href="{% url 'register' %}" class='button'>Register</a></li>
+	<li><a href="{% url 'login' %}" class='button'>Login</a></li>
 	{% endif %}
 {% endblock %}
 
@@ -21,7 +26,7 @@
 		<p>Time Collected: {{latest.time_collected}}</p>
 
 		<p>Temperature: {{latest.temperature}}°C</p>
-		<p>EC Level: {{latest.ec_level}}microsiemens</p>
+		<p>EC Level: {{latest.ec_level}} &micro;S/cm</p>
 		{% csrf_token %}
 		<div id="temp-graph"></div>
 		{% csrf_token %}
@@ -29,5 +34,6 @@
 	{% endif %}
 {% endblock %}
 
-{% block javascript %}
+{% block javascipt %}
+	{{block.super}}
 {% endblock %}

@@ -7,38 +7,44 @@
 		<link rel='stylesheet' href="{% static 'css/normalize.css' %}"/>
         <link rel='stylesheet' href="https://fonts.googleapis.com/css?family=Raleway:400,700|Roboto" type='text/css'/>
 		<link rel='stylesheet' href="{% static 'css/style.css' %}"/>
-		<link rel='stylesheet' href="{% static 'css/responsive.css' %}"/>
 		<link rel='stylesheet' href='{% static "css/d3.css" %}'/>
 		<link rel="shortcut icon" href="{% static 'icon/favicon.ico' %}" type="image/x-icon"/>
 		<title>{% block title %}Bona Petite{% endblock %}</title>
 	</head>
 	<body>
 		<header>
-			<div id='logo'>
+			<div id='logo-link'>
 				<a href="{% url 'index' %}">
-					<div id='logo-text'>
-						<h1>BONA PETITE</h1>
-						<h2>Keeping good things growing</h2>
-					</div>
+					<img src="{% static 'images/BonaPetite.png' %}" alt="Bona Petite logo">
+					<h2>Keeping good things growing</h2>
 				</a>
-				<div id='logo-buttons'>
-					<ul>
-						{% if user.is_authenticated %}
-						<li><a href="{% url 'plantinfo' %}" class='button' id='plantinfo'>Plant Info</a></li>
-						<li><a href="{% url 'logout' %}" class='button' id='logout'>Logout</a></li>
-						{% else %}
-						<li><a href="{% url 'register' %}" class='button' id='register'>Register </a></li>
-						<li><a href="{% url 'login' %}" class='button' id='login'>Login</a></li>
-						{% endif %}
-					</ul>
-				</div>
 			</div>
-			<nav>
-				<ul>
-					{% block headernavul %}
-					{% endblock %}
-				</ul>
-			</nav>
+			<div id='logo-navs'>
+				<nav>
+					<ul>
+						{% block headernavul %}
+							<li><a href="{% url 'index' %}" class='button'>Home</a></li>
+							<li><a href="{% url 'about' %}" class='button'>About</a></li>
+							<li><a href="{% url 'contact' %}" class='button'>Contact</a></li>
+						{% endblock %}
+					</ul>
+				</nav>
+			</div>
+			<div id='logo-buttons'>
+				<nav>
+					<ul>
+						{% block headernavreg %}
+							{% if user.is_authenticated %}
+							<li><a href="{% url 'plantinfo' %}" class='button'>Plant Info</a></li>
+							<li><a href="{% url 'logout' %}" class='button'>Logout</a></li>
+							{% else %}
+							<li><a href="{% url 'register' %}" class='button'>Register</a></li>
+							<li><a href="{% url 'login' %}" class='button'>Login</a></li>
+							{% endif %}
+						{% endblock %}
+					</ul>
+				<nav>
+			</div>
 		</header>
 		<div id='wrapper'>
 			{% block bodycontent %}

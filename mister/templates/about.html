@@ -1,16 +1,17 @@
 {% extends 'base.html' %}
 
 {% block title %}
-	About - {{ block.super }}
+	About {{ block.super }}
 {% endblock %}
 
 {% block headernavul %}
-	<li><a href="{% url 'index' %}">Home</a></li>
-	<li><a href="{% url 'about' %}" class='selected'>About</a></li>
-	<li><a href="{% url 'contact' %}">Contact</a></li>
-	{% if user.is_authenticated %}
-	<li><a href="{% url 'plantinfo' %}">Plant Info</a></li>
-	{% endif %}
+	<li><a href="{% url 'index' %}" class='button'>Home</a></li>
+	<li><a href="{% url 'about' %}" class='button' id='selected'>About</a></li>
+	<li><a href="{% url 'contact' %}" class='button'>Contact</a></li>
+{% endblock %}
+
+{% block headernavreg %}
+	{{ block.super }}
 {% endblock %}
 
 {% block bodycontent %}
@@ -70,4 +71,7 @@
 		of SMS updates will provide for even quicker notifications of key indicators. With the additon of a built-in solar panel, Bona Petite will be able to fully function without connecting to a power source. Users will be able to customize which sensors they are using with an easy edit feature, which the web app will be updated with all selections of plants which can be grown hydroponically to notify the user of particular ideal conditions, respectively.</p>
 </div>
 </p>
+{% endblock %}
+
+{% block javascipt %}
 {% endblock %}

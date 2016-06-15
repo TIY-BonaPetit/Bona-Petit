@@ -1,20 +1,26 @@
 {% extends 'base.html' %}
 
 {% block title %}
-	Register - {{ block.super }}
+	Register for {{ block.super }}
 {% endblock %}
 
 {% block headernavul %}
-	<li><a href="{% url 'index' %}">Home</a></li>
-	<li><a href="{% url 'about' %}">About</a></li>
-	<li><a href="{% url 'contact' %}">Contact</a></li>
+	{{block.super}}
+{% endblock %}
+
+{% block headernavreg %}
 	{% if user.is_authenticated %}
-	<li><a href="{% url 'plantinfo' %}">Plant Info</a></li>
+	<li><a href="{% url 'plantinfo' %}" class='button'>Plant Info</a></li>
+	<li><a href="{% url 'logout' %}" class='button'>Logout</a></li>
+	{% else %}
+	<li><a href="{% url 'register' %}" class='button' id='selected'>Register</a></li>
+	<li><a href="{% url 'login' %}" class='button'>Login</a></li>
 	{% endif %}
 {% endblock %}
 
 {% block bodycontent %}
-	<h3>Registration</h3>
+	<h1>Registration</h1>
+	<br/>
     {% if registered %}
     <strong>Bona Petite Welcomes You!</strong>
     <a href="{% url 'login' %}">Login</a>
@@ -27,4 +33,7 @@
         <input type="submit" name="submit" value="Register"/>
     </form>
     {% endif %}
+{% endblock %}
+
+{% block javascipt %}
 {% endblock %}

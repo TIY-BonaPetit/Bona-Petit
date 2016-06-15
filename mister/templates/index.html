@@ -1,19 +1,23 @@
 {% extends 'base.html' %}
 
 {% block title %}
-	Home - {{ block.super }}
+	Welcome to {{ block.super }}
 {% endblock %}
 
 {% block headernavul %}
-	<li><a href="{% url 'index' %}" class='selected'>Home</a></li>
-	<li><a href="{% url 'about' %}">About</a></li>
-	<li><a href="{% url 'contact' %}">Contact</a></li>
-	{% if user.is_authenticated %}
-	<li><a href="{% url 'plantinfo' %}">Plant Info</a></li>
-	{% endif %}
+	<li><a href="{% url 'index' %}" class='button' id='selected'>Home</a></li>
+	<li><a href="{% url 'about' %}" class='button'>About</a></li>
+	<li><a href="{% url 'contact' %}" class='button'>Contact</a></li>
+{% endblock %}
+
+{% block headernavreg %}
+	{{ block.super }}
 {% endblock %}
 
 {% block bodycontent %}
-	<h3>The Future of Hydroponic Farms is Here!</h3>
+	<h1>The Future of Hydroponic Farms is Here!</h1>
 	<img src="../static/images/product_demo.png">
+{% endblock %}
+
+{% block javascipt %}
 {% endblock %}

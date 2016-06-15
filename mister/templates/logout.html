@@ -1,19 +1,27 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Logout - {{block.super}}
+    Logout
 {% endblock %}
 
 {% block headernavul %}
-	<li><a href="{% url 'index' %}">Home</a></li>
-	<li><a href="{% url 'about' %}">About</a></li>
-	<li><a href="{% url 'contact' %}">Contact</a></li>
+	{{block.super}}
+{% endblock %}
+
+{% block headernavreg %}
 	{% if user.is_authenticated %}
-	<li><a href="{% url 'plantinfo' %}">Plant Info</a></li>
+	<li><a href="{% url 'plantinfo' %}" class='button'>Plant Info</a></li>
+	<li><a href="{% url 'logout' %}" class='button' id='selected'>Logout</a></li>
+	{% else %}
+	<li><a href="{% url 'register' %}" class='button'>Register </a></li>
+	<li><a href="{% url 'login' %}" class='button'>Login</a></li>
 	{% endif %}
 {% endblock %}
 
 {% block bodycontent %}
     <h3>Logged Out</h3>
     <p>You Have Been Logged Out</p>
+{% endblock %}
+
+{% block javascipt %}
 {% endblock %}

@@ -1,28 +1,40 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Login - {{block.super}}
+    Login to {{block.super}}
 {% endblock %}
 
 {% block headernavul %}
-	<li><a href="{% url 'index' %}">Home</a></li>
-	<li><a href="{% url 'about' %}">About</a></li>
-	<li><a href="{% url 'contact' %}">Contact</a></li>
+	{{block.super}}
+{% endblock %}
+
+{% block headernavreg %}
 	{% if user.is_authenticated %}
-	<li><a href="{% url 'plantinfo' %}">Plant Info</a></li>
+	<li><a href="{% url 'plantinfo' %}" class='button'>Plant Info</a></li>
+	<li><a href="{% url 'logout' %}" class='button'>Logout</a></li>
+	{% else %}
+	<li><a href="{% url 'register' %}" class='button'>Register </a></li>
+	<li><a href="{% url 'login' %}" class='button' id='selected'>Login</a></li>
 	{% endif %}
 {% endblock %}
 
 {% block bodycontent %}
-    <h3>Login to Bona Petite</h3>
+    <h1>Login to Bona Petite</h1>
+    <br/>
+    <br/>
 
     <form id="login_form" method="post" action="/login/">
         {% csrf_token %}
         Username: <input type="text" name="username" value="" size="50" />
-        <br />
+        <br/>
+        <br/>
         Password: <input type="password" name="password" value="" size="50" />
-        <br />
+        <br/>
+        <br/>
 
         <input type="submit" value="submit" />
     </form>
+{% endblock %}
+
+{% block javascipt %}
 {% endblock %}
