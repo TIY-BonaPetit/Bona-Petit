@@ -1,4 +1,3 @@
-
 // grab the json data
 d3.json("/api/mister/").get(function(error, json) {
 
@@ -212,15 +211,10 @@ d3.json("/api/mister/").get(function(error, json) {
     .style("display", "none")
     });
 
-
     var dataTwo = json.results;
-    console.log(dataTwo[0].time_collected);
-    console.log(dataTwo[19].time_collected);
 
     //change x domain
     x.domain(d3.extent(dataTwo, dateFn));
-
-
 
     var path1 = ecg.selectAll("ecline").data(dataTwo);
 
