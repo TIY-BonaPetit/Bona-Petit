@@ -10,6 +10,10 @@ d3.json("/api/mister/")
     //set svg data as json payload
     var data = json.results;
     console.log(data);
+    console.log(data[0]);
+    console.log(data[0].time_collected);
+    console.log(data[19].time_collected);
+    // console.log(data.time_collected);
 
   //----------------------------shared graph variables---------------------//
 
@@ -84,7 +88,7 @@ d3.json("/api/mister/")
     svg.append("text")
       .attr("text-anchor", "middle")
       .attr("transform", "translate("+(width/2)+","+(height+margins.bottom/3)+")")
-      .text("Time (Hr:Min:Sec)");
+      .text("Time (Hours/Minutes/Seconds)");
 
     //append y axis label
     svg.append("text")
@@ -137,28 +141,38 @@ d3.json("/api/mister/")
        .y(function(d){ return y(tempFn(d))})
        .interpolate("linear");
 
+   //append temp data line
+   // svg.append("svg:path")
+   //   .attr("d", line(data))
+   //   .style("stroke", "limegreen");
+
+
     var refreshTempGraph = setInterval( function(){
       d3.json("/api/mister/")
      .get(function(error, json) {
        //error callback
        if (error) return console.warn(error);
-
        //set svg data as json payload
-       var dataTemp = json.results;
+       var dataOne = json.results;
+        console.log(dataOne[0].time_collected);
+        console.log(dataOne[19].time_collected);
 
-       var path = svg.selectAll("templine").data(dataTemp);
+
+       var path = svg.selectAll("templine").data(dataOne);
 
        svg.selectAll("path").remove()
 
        path.enter().append("path")
-       .attr("d", line(dataTemp))
+       .attr("d", line(dataOne))
        .attr('class', 'templine')
        .style("stroke", "limegreen");
 
-      var circles = svg.selectAll("circle").data(dataTemp);
+
+
+      var circles = svg.selectAll("circle").data(dataOne)
 
       circles.transition()
-      .attr("cx", function(d) { return x(dateFn(d))})
+      .attr("cx", function(d) { return x(dateFn(d)) })
       .attr("cy", function(d){ return y(tempFn(d))});
 
       //append temp data as circles
@@ -184,8 +198,10 @@ d3.json("/api/mister/")
           .style("opacity", 0)
           .style("display", "none")
         });
+
     })//end get
     }, 1000);//end timer
+
 
     //create empty/invisible div to for as to have DOM attachment for tooltip
     var tempTooltip = d3.select("body")
@@ -281,26 +297,27 @@ d3.json("/api/mister/")
      .get(function(error, json) {
        //error callback
        if (error) return console.warn(error);
-
        //set svg data as json payload
-       var dataEC = json.results;
+       var dataTwo = json.results;
+       console.log(dataTwo[0].time_collected);
+       console.log(dataTwo[19].time_collected);
 
        //change x domain
-       x.domain(d3.extent(dataEC, dateFn));
+       x.domain(d3.extent(dataTwo, dateFn));
 
       //  ecg.selectAll('.x.axis')
       //  .call(xAxis)
 
-       var path1 = ecg.selectAll("path").data(dataEC);
+       var path1 = ecg.selectAll("path").data(dataTwo);
 
        path1.remove()
 
        path1.enter().append("path")
-       .attr("d", ecLine(dataEC))
+       .attr("d", ecLine(dataTwo))
        .style("stroke", "limegreen");
 
 
-      var circles = ecg.selectAll("circle").data(dataEC)
+      var circles = ecg.selectAll("circle").data(dataTwo)
 
       circles.transition()
       .attr("cx", function(d) { return x(dateFn(d)) })
@@ -329,7 +346,10 @@ d3.json("/api/mister/")
          .style("opacity", 0)
          .style("display", "none")
        });
+
    })//end get
    }, 1000);//end timeout
-   // refreshECGraph();
+
+    // refreshECGraph();
+
 });
