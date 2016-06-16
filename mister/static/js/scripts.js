@@ -168,7 +168,7 @@ d3.json("/api/mister/").get(function(error, json) {
     svg.append("text")
     .attr("text-anchor", "middle")
     .attr("transform", "translate("+(width/2)+","+(height+margins.bottom/3)+")")
-    .text("Time (Hr:Min:Sec)");
+    .text("TIME (HR:MIN:SEC)");
 
     //append y axis label
     svg.append("text")
@@ -177,7 +177,7 @@ d3.json("/api/mister/").get(function(error, json) {
     .attr("x",0 - (height / 2))
     .attr("dy", "1em")
     .style("text-anchor", "middle")
-    .text("Temperature (Celsius)");
+    .text("TEMPERATURE (\u00B0C)");
 
 
     var circles = svg.selectAll("circle").data(dataOne)
@@ -276,7 +276,7 @@ d3.json("/api/mister/").get(function(error, json) {
     ecg.append("text")
     .attr("text-anchor", "middle")
     .attr("transform", "translate("+(width/2)+","+(height+margins.bottom/3)+")")
-    .text("Time (Hr:Min:Sec)");
+    .text("TIME (HR:MIN:SEC)");
 
     //append y axis label
     ecg.append("text")
@@ -285,7 +285,7 @@ d3.json("/api/mister/").get(function(error, json) {
     .attr("x",0 - (height / 2))
     .attr("dy", "1em")
     .style("text-anchor", "middle")
-    .text("Electrical Conductivilty (&micro;S/cm)");
+    .text("CONDUCTIVITY (\u03BCS/cm)");
 
     var circles = ecg.selectAll("circle").data(dataTwo)
 

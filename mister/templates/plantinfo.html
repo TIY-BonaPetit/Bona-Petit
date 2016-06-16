@@ -20,13 +20,27 @@
 
 {% block bodycontent %}
 	{% if user.is_authenticated %}
-	<h2> Bona Petite, {{user.username}}!</h2>
-	<!-- change this to allow whatever crop_Type is selected to be inserted -->
-		<h3>Latest Reading for 'New Gold' Lantana<h3>
-		<p>Time Collected: <span id='tc'>{{ latest.time_collected }}</span></p>
-
-		<p>Temperature: <span id='tmp'>{{ latest.temperature }}</span>°C</p>
-		<p>EC Level: <span id='ecl'>{{ latest.ec_level }}</span> &micro;S/cm</p>
+		<div id='plantintro'>
+			<h2> Bona Petite, {{user.username}}!</h2>
+		</div>
+		<br/>
+		<br/>
+		<!-- change this to allow whatever crop_Type is selected to be inserted -->
+		<div id='plantheader'>
+			<ul>
+				<li id="plantheaderitemone">
+					<br/>
+					<h3>Latest Reading for Your </h3>
+					<h3><b>'New Gold' Lantana</b><h3>
+				</li>
+				<li id="plantheaderitemtwo" class='planttext'>
+					<p>Time Collected: <span id='tc'>{{ latest.time_collected }}</span></p>
+					<p>Temperature: <span id='tmp'>{{ latest.temperature }}</span>°C</p>
+					<p>EC Level: <span id='ecl'>{{ latest.ec_level }}</span> &micro;S/cm</p>
+				</li>
+			</ul>
+		</div>
+		<br/>
 		{% csrf_token %}
 		<div id="temp-graph"></div>
 		{% csrf_token %}

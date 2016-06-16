@@ -1,6 +1,9 @@
 #ec-graph, #temp-graph{
   font-size: .6em;
   font-family: sans-serif;
+  text-transform: none;
+  margin: auto;
+  width: 800px;
 }
 
 path{
@@ -24,7 +27,7 @@ path{
   padding: 10px;
   position: absolute;
   top: 95px;
-  width: 120px;
+  width: 170px;
   z-index: 10;
   border-radius: .5em;
 }
